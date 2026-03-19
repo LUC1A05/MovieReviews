@@ -61,14 +61,18 @@ public class ParametroEkorketa {
 					System.out.println("Confidence: " + c);
 					for(int h : hosto) {
 						System.out.println("Hosto: " + h);
-						J48 j48 = new J48();
-						AdaBoostM1 adaboost = new AdaBoostM1();
-						adaboost.setNumIterations(i);
-						adaboost.setWeightThreshold(t);
-						j48.setConfidenceFactor(c);
-						j48.setMinNumObj(h);
-						adaboost.setClassifier(j48);
-						adaboost.buildClassifier(train);
+						
+						OptimalModelCreator.getOpc().setParametroOptimoak(itOnena, thrOnena, confOnena, hosOnena);
+						AdaBoostM1 adaboost = (AdaBoostM1) OptimalModelCreator.getOpc().entrenatuEreduOptimoa(train);
+						
+//						J48 j48 = new J48();
+//						AdaBoostM1 adaboost = new AdaBoostM1();
+//						adaboost.setNumIterations(i);
+//						adaboost.setWeightThreshold(t);
+//						j48.setConfidenceFactor(c);
+//						j48.setMinNumObj(h);
+//						adaboost.setClassifier(j48);
+//						adaboost.buildClassifier(train);
 						
 						Evaluation eval = new Evaluation(train);
 						eval.evaluateModel(adaboost, dev);
@@ -89,8 +93,6 @@ public class ParametroEkorketa {
 			}
 		}
 		OptimalModelCreator.getOpc().setParametroOptimoak(itOnena, thrOnena, confOnena, hosOnena);
-		System.out.println("Iterazio: " +itOnena + "Threshold: " + thrOnena+ "Confidence: " + confOnena + "Hosto: " + hosOnena);
-	System.out.println("Amaituta");
 		
 		
 	}
