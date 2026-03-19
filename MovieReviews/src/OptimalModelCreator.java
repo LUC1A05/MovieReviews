@@ -25,11 +25,11 @@ public class OptimalModelCreator {
         return opc;
     }
 
-    public void setParametroOptimoak(int pI, int pT, int pC, int pH)
+    public void setParametroOptimoak(int pI, int pT, float confOnena, int pH)
     {
         it = pI;
         thr = pT;
-        conf = pC;
+        conf = confOnena;
         hos = pH;
     }
 

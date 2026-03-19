@@ -15,8 +15,8 @@ public class ParametroEkorketa {
 //		String trainData = args[0];
 //		String devData = args[1];
 
-		DataSource tSource = new DataSource("MovieReviews_train.arff");
-		DataSource tDev = new DataSource("MovieReviews_dev.arff");
+		DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
+		DataSource tDev = new DataSource("dev_aurreprozesatuta.arff");
 		
 		Instances train = tSource.getDataSet();
 		Instances dev = tDev.getDataSet();
@@ -25,18 +25,18 @@ public class ParametroEkorketa {
 		dev.setClassIndex(dev.numAttributes() - 1);
 		
 		//Lo tengo puesto para hacer pruebas
-		StringToWordVector stwv = new StringToWordVector();
-		stwv.setAttributeNamePrefix("W_");
-		stwv.setInputFormat(train);
-		Instances tVector = Filter.useFilter(train, stwv);
-		Instances dVector = Filter.useFilter(dev, stwv);
-		/////////////////////////////////////////////////
-		
-		System.out.println(tVector.classAttribute().value(0));
-		System.out.println(dVector.classAttribute().value(1));
-		
-		System.out.println(train.numAttributes());
-		System.out.println(dev.numAttributes());
+//		StringToWordVector stwv = new StringToWordVector();
+//		stwv.setAttributeNamePrefix("W_");
+//		stwv.setInputFormat(train);
+//		Instances tVector = Filter.useFilter(train, stwv);
+//		Instances dVector = Filter.useFilter(dev, stwv);
+//		/////////////////////////////////////////////////
+//		
+//		System.out.println(tVector.classAttribute().value(0));
+//		System.out.println(dVector.classAttribute().value(1));
+//		
+//		System.out.println(train.numAttributes());
+//		System.out.println(dev.numAttributes());
 		
 		//Valores de prueba, luego pondré los "reales"
 		//AdaBoostM1
@@ -54,13 +54,13 @@ public class ParametroEkorketa {
 		int hosOnena = 0;
 		
 		for(int i : iterazioak) {
-			System.out.println(i);
+			System.out.println("Iterazio: " + i);
 			for(int t : threshold) {
-				System.out.println(t);
+				System.out.println("Threshold: " + t);
 				for(float c : confidence) {
-					System.out.println(c);
+					System.out.println("Confidence: " + c);
 					for(int h : hosto) {
-						System.out.println(h);
+						System.out.println("Hosto: " + h);
 						J48 j48 = new J48();
 						AdaBoostM1 adaboost = new AdaBoostM1();
 						adaboost.setNumIterations(i);
@@ -68,10 +68,10 @@ public class ParametroEkorketa {
 						j48.setConfidenceFactor(c);
 						j48.setMinNumObj(h);
 						adaboost.setClassifier(j48);
-						adaboost.buildClassifier(tVector);
+						adaboost.buildClassifier(train);
 						
-						Evaluation eval = new Evaluation(tVector);
-						eval.evaluateModel(adaboost, dVector);
+						Evaluation eval = new Evaluation(train);
+						eval.evaluateModel(adaboost, dev);
 						
 						double currentFMeasure = eval.weightedFMeasure();
 						if(currentFMeasure > maxFMeasure) {
@@ -88,6 +88,8 @@ public class ParametroEkorketa {
 				}
 			}
 		}
+		OptimalModelCreator.getOpc().setParametroOptimoak(itOnena, thrOnena, confOnena, hosOnena);
+		System.out.println("Iterazio: " +itOnena + "Threshold: " + thrOnena+ "Confidence: " + confOnena + "Hosto: " + hosOnena);
 	System.out.println("Amaituta");
 		
 		
