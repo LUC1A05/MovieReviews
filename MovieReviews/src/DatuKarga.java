@@ -10,25 +10,24 @@ import weka.core.Utils;
 
 public class DatuKarga {
 
-	public static void main(String[] args) throws IOException {
+	/**
+	 * @param blind gainbegiratua bada False jasoko du eta ez gainbegiratua bada True
+	 * @param path Datuak aurkitzen diren karpetaren path-a jasoko du.
+	 * @return Instantziak itzuliko ditu, dagokion klasearekin.
+	 * @throws IOException
+	 */
+	public static Instances datuakKargatu(boolean blind, String path) throws IOException {
 		
-		String bool = args[0];
-		String path = null;
+		String blindPath = null;
 		String posPath = null;
 		String negPath = null;
-		String output = null;
-		Boolean blind = false;
-		if (bool.equals("True")) {
-			blind = true;
-			path = args[1];
-			output = args[2];
+		//datu sorta klasea duen ala ez adierazten du
+		if (blind) {
+			blindPath = path;
+		} else {
+			posPath = path + "/pos";
+			negPath = path + "/neg";
 		}
-		else {
-			posPath = args[1];
-			negPath = args[2];
-			output = args[3];			
-		}
-		
 		
 		ArrayList<Attribute> attributes = new ArrayList<>();
 		
@@ -43,7 +42,7 @@ public class DatuKarga {
 		data.setClassIndex(1);
 		
 		if (blind) {
-			loadReviews(path, "", data);
+			loadReviews(blindPath, "", data);
 		}
 		else {
 			loadReviews(posPath, "pos", data);
@@ -51,9 +50,16 @@ public class DatuKarga {
 			
 		}
 		
-		Saver.saveArff(data, new File(output));
+		return data;
+		
 	}
 	
+	/**
+	 * @param path
+	 * @param klasea
+	 * @param data
+	 * @throws IOException
+	 */
 	private static void loadReviews(String path, String klasea, Instances data) throws IOException {
 		File dir = new File(path);
 		for (File file : dir.listFiles()) {
