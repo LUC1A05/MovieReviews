@@ -1,32 +1,34 @@
-import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
-
-import java.io.File;
-
 import weka.classifiers.Evaluation;
 import weka.classifiers.meta.AdaBoostM1;
+import weka.classifiers.trees.J48;
 
 public class ParametroEkorketa {
 
-	public static void main(String[] args) throws Exception {
-//		String trainData = args[0];
-//		String devData = args[1];
+	/**
+	 * @param train
+	 * @param dev
+	 * @throws Exception
+	 */
+	public void ParametroEkorketa(Instances train, Instances dev) throws Exception {
+//	public static void main(String args[]) throws Exception{
 
-		DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
-		DataSource tDev = new DataSource("dev_aurreprozesatuta.arff");
-		
-		Instances train = tSource.getDataSet();
-		Instances dev = tDev.getDataSet();
-		
-		train.setClassIndex(train.numAttributes() - 1);
-		dev.setClassIndex(dev.numAttributes() - 1);
-		
-		//Lo tengo puesto para hacer pruebas
+//		DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
+//		DataSource tDev = new DataSource("dev_aurreprozesatuta.arff");
+//		
+//		Instances train = tSource.getDataSet();
+//		Instances dev = tDev.getDataSet();
+//		
+//		train.setClassIndex(train.numAttributes() - 1);
+//		dev.setClassIndex(dev.numAttributes() - 1);
+//		train.classAttribute().setStringValue("Klasea");
+//		
+//		//Lo tengo puesto para hacer pruebas
 //		StringToWordVector stwv = new StringToWordVector();
-//		stwv.setAttributeNamePrefix("W_");
+//		//stwv.setAttributeNamePrefix("W_");
 //		stwv.setInputFormat(train);
 //		Instances tVector = Filter.useFilter(train, stwv);
 //		Instances dVector = Filter.useFilter(dev, stwv);
@@ -45,7 +47,7 @@ public class ParametroEkorketa {
 		
 		//J48
 		float[] confidence = {(float) 0.1, (float) 0.25, (float) 0.5}; 
-		int[] hosto = {1, 5, 15, 50, 100};
+		// int[] hosto = {1, 5, 15, 50, 100};
 		
 		double maxFMeasure = 0;
 		int itOnena = 0;
@@ -59,10 +61,11 @@ public class ParametroEkorketa {
 				System.out.println("Threshold: " + t);
 				for(float c : confidence) {
 					System.out.println("Confidence: " + c);
-					for(int h : hosto) {
-						System.out.println("Hosto: " + h);
+					for(int h=1; h<=train.numInstances(); h++) {
 						
-						OptimalModelCreator.getOpc().setParametroOptimoak(itOnena, thrOnena, confOnena, hosOnena);
+						//System.out.println("Hosto: " + h);
+						
+						OptimalModelCreator.getOpc().setParametroOptimoak(i, t, c, h);
 						AdaBoostM1 adaboost = (AdaBoostM1) OptimalModelCreator.getOpc().entrenatuEreduOptimoa(train);
 						
 //						J48 j48 = new J48();

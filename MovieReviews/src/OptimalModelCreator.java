@@ -21,7 +21,7 @@ public class OptimalModelCreator {
 
     public static OptimalModelCreator getOpc() {
         if (opc == null)
-            return new OptimalModelCreator();
+            opc = new OptimalModelCreator();
         return opc;
     }
 
@@ -44,7 +44,7 @@ public class OptimalModelCreator {
             j48.setConfidenceFactor(conf);
             j48.setMinNumObj(hos);
             adaboost.setClassifier(j48);
-            adaboost.buildClassifier(train);
+            adaboost.buildClassifier(train);     
         } catch (Exception e) {
            e.printStackTrace();
         }
