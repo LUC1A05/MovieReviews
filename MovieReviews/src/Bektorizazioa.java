@@ -5,11 +5,12 @@ import weka.core.converters.ConverterUtils.DataSource;
 import weka.core.stopwords.Rainbow;
 import weka.core.tokenizers.AlphabeticTokenizer;
 import weka.filters.Filter;
+import weka.filters.unsupervised.attribute.FixedDictionaryStringToWordVector;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
 public class Bektorizazioa {
 	
-	private StringToWordVector stwv;
+	private File hiztegia;
 	/**
 	 * @param .arff duen path-a
 	 * @return Pasatutako instantziei stwv pasatuko zaio
@@ -26,7 +27,8 @@ public class Bektorizazioa {
 	 * @throws Exception 
 	 */
 	public Instances bektorizatu(Instances data) throws Exception {
-		stwv = new StringToWordVector();
+		hiztegia = new File("./dictionary.txt");
+		StringToWordVector stwv = new StringToWordVector();
 		//AlphabeticTokenizer hitz alfabetikoak onartzen ditu soilik
 		stwv.setTokenizer(new AlphabeticTokenizer());
 		//Konektore motako hitzak ezabatzen ditu, ez baitute baliorik ematen
@@ -43,7 +45,7 @@ public class Bektorizazioa {
 		//atributu izenetan prefijoa jarri kolisioak sahiesteko
 		stwv.setAttributeNamePrefix("W_");
 		//Hiztegia fitxategian gorde
-		//stwv.setDictionaryFileToSaveTo(new File("./dictionary.txt"));
+		stwv.setDictionaryFileToSaveTo(hiztegia);
 		//Hitzak erroetan bihurtzen ditu, beraz esanhai bereko hitzak bateratzen ditu
 		//ALDATU ESPERIMENTAZIORAKO
 		stwv.setStemmer(new weka.core.stemmers.LovinsStemmer());
@@ -72,12 +74,25 @@ public class Bektorizazioa {
 	 * @throws Exception 
 	 */
 	public Instances bektorizatufix(Instances data) throws Exception {
-		Instances ema = Filter.useFilter(data, stwv);
+		FixedDictionaryStringToWordVector fd = new FixedDictionaryStringToWordVector();
+		fd.setDictionaryFile(new File("./dictionary.txt"));
+		//ALDATU esperimentaziorako
+		fd.setTFTransform(false);
+		fd.setIDFTransform(false);
+		fd.setLowerCaseTokens(true);
+		fd.setOutputWordCounts(true);
+		fd.setTokenizer(new AlphabeticTokenizer());
+		fd.setAttributeNamePrefix("W_");
+		
+		Rainbow stopWords = new Rainbow();
+		fd.setStopwordsHandler(stopWords);
+		fd.setInputFormat(data);
+		
+		Instances ema = Filter.useFilter(data, fd);
 		return ema;
 	}
 	
 	private Instances pathToArff(String path) throws Exception {
-		
 		DataSource source = new DataSource(path);
 		Instances data = source.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
