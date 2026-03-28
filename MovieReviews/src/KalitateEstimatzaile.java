@@ -115,7 +115,7 @@ public class KalitateEstimatzaile {
            e.printStackTrace();
         }
     	Evaluation eval = new Evaluation(data[0]);
-    	eval.crossValidateModel(adaboost, all, 5, new Random(1));
+    	eval.crossValidateModel(adaboost, data[0], 5, new Random(1));
         idatziReportea("5FCV - Ez Zintzoa", eval);
     }
     
@@ -123,6 +123,7 @@ public class KalitateEstimatzaile {
 
         try
         {
+        	all.setClassIndex(all.numAttributes() - 1);
             
             ezZintzoa(all);
             

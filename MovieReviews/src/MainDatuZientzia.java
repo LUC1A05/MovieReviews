@@ -9,7 +9,7 @@ public class MainDatuZientzia
 
 	public static void main(String[] args)
 	{
-		if (args[0] == null)
+		if (args.length == 0)
 		{
 			System.out.println("Erabilera: (Exekutagarri izena) (datu karpeta)\n ##Adbibidez: Modeloa_entrenatu MovieReviews");
 			return ;
@@ -47,9 +47,21 @@ public class MainDatuZientzia
 			DatuAnalisia.datuSortaBekAnalisia(train);
 			DatuAnalisia.datuSortaBekAnalisia(dev);
 			
+			System.out.println("Atrib kop " + train.numAttributes());
+			System.out.println("Atrib kop " + dev.numAttributes());
+
+			
 			AtributuHautapena aH = new AtributuHautapena();
 			train = aH.selectAttributes(train);
 			dev = aH.removeAttributes(dev);
+			System.out.println("Atrib kop " + train.numAttributes());
+			System.out.println("Atrib kop " + dev.numAttributes());
+			System.out.println("Filtroaren ostean " + dev.numInstances());
+
+			
+			
+			//train.setClassIndex(train.numAttributes() - 1);
+			//dev.setClassIndex(dev.numAttributes() - 1);
 			
 			ParametroEkorketa.ParametroEkorketa(train, dev);
 			

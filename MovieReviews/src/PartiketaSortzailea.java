@@ -28,6 +28,9 @@ public class PartiketaSortzailea {
         
         // atributu hautapena
         AtributuHautapena attSel = new AtributuHautapena();
+        //trainSet.setClass(null);
+        trainSet.setClassIndex(0);
+        testSet.setClassIndex(0);
         Instances train = attSel.selectAttributes(trainSet);
         Instances test = attSel.removeAttributes(testSet);
 

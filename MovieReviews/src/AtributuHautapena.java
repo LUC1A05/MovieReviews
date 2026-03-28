@@ -13,7 +13,7 @@ public class AtributuHautapena {
 	
 	public AtributuHautapena()
 	{
-		
+		rankN = 1000;
 	}
 	
 	public Instances selectAttributes(Instances data) throws Exception {
@@ -41,9 +41,9 @@ public class AtributuHautapena {
 		remove.setAttributeIndicesArray(selected);
 		remove.setInvertSelection(true);
 		remove.setInputFormat(data);
-		remove.setAttributeIndicesArray(null);
 		
 		Instances ema = Filter.useFilter(data, remove);
+		System.out.println("Filtroaren ostean " + ema.numInstances());
 		return ema;
 	}
 	

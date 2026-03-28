@@ -39,8 +39,8 @@ public class ParametroEkorketa {
 //		Instances dVector = Filter.useFilter(dev, stwv);
 //		/////////////////////////////////////////////////
 		
-		System.out.println(train.numInstances());
-		System.out.println(dev.numAttributes());
+		System.out.println("Num instances in train: " + train.numInstances());
+		System.out.println("Num instances in dev: " + dev.numInstances());
 		
 		//Valores de prueba, luego pondré los "reales"
 		//AdaBoostM1
@@ -61,7 +61,7 @@ public class ParametroEkorketa {
 		int hosOnena = 0;
 		
 		for(int i : iterazioak) {
-			//System.out.println("Iterazio: " + i);
+			System.out.println("Iterazio: " + i);
 			for(int t : threshold) {
 				//System.out.println("Threshold: " + t);
 				for(float c : confidence) {
