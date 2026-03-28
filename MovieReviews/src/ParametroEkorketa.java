@@ -44,8 +44,8 @@ public class ParametroEkorketa {
 		
 		//Valores de prueba, luego pondré los "reales"
 		//AdaBoostM1
-		int[] iterazioak = {10, 50, 100, 250, 500, 1000}; 
-		int[] threshold = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+		int[] iterazioak = {10, 50, 100}; 
+		int[] threshold = {10, 20, 30, 40};
 		
 		//J48
 		float[] confidence = {(float) 0.1, (float) 0.25, (float) 0.5}; 
