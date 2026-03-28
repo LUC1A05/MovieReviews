@@ -13,7 +13,7 @@ public class ParametroEkorketa {
 	 * @param dev
 	 * @throws Exception
 	 */
-	public void ParametroEkorketa(Instances train, Instances dev) throws Exception {
+	public void parametroEkorketa(Instances train, Instances dev) throws Exception {
 //	public static void main(String args[]) throws Exception{
 
 //		DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
@@ -47,7 +47,6 @@ public class ParametroEkorketa {
 		
 		//J48
 		float[] confidence = {(float) 0.1, (float) 0.25, (float) 0.5}; 
-		// int[] hosto = {1, 5, 15, 50, 100};
 		
 		double maxFMeasure = 0;
 		int itOnena = 0;
@@ -63,19 +62,8 @@ public class ParametroEkorketa {
 					System.out.println("Confidence: " + c);
 					for(int h=1; h<=train.numInstances(); h++) {
 						
-						//System.out.println("Hosto: " + h);
-						
 						OptimalModelCreator.getOpc().setParametroOptimoak(i, t, c, h);
 						AdaBoostM1 adaboost = (AdaBoostM1) OptimalModelCreator.getOpc().entrenatuEreduOptimoa(train);
-						
-//						J48 j48 = new J48();
-//						AdaBoostM1 adaboost = new AdaBoostM1();
-//						adaboost.setNumIterations(i);
-//						adaboost.setWeightThreshold(t);
-//						j48.setConfidenceFactor(c);
-//						j48.setMinNumObj(h);
-//						adaboost.setClassifier(j48);
-//						adaboost.buildClassifier(train);
 						
 						Evaluation eval = new Evaluation(train);
 						eval.evaluateModel(adaboost, dev);
