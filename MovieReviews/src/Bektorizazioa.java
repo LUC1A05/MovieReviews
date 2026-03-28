@@ -11,6 +11,13 @@ import weka.filters.unsupervised.attribute.StringToWordVector;
 public class Bektorizazioa {
 	
 	private File hiztegia;
+	
+	public Bektorizazioa()
+	{
+		
+	}
+	
+	
 	/**
 	 * @param .arff duen path-a
 	 * @return Pasatutako instantziei stwv pasatuko zaio
