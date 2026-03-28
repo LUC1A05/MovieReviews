@@ -45,7 +45,7 @@ public class Bektorizazioa {
 		stwv.setStopwordsHandler(new Rainbow());
 		//false -> soilik agertzen den ala ez bueltatuko du
 		//true -> maiztasuna ematen du
-		stwv.setOutputWordCounts(false);
+		stwv.setOutputWordCounts(konfig.getUseWordCounts());
 		//TF eta IDF transformazioak hartu ala ez deskribatu
 		//ALDATU ESPERIMENTAZIORAKO
 		stwv.setTFTransform(konfig.getUseTF());

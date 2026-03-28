@@ -32,6 +32,27 @@ public class OptimalModelCreator {
         conf = confOnena;
         hos = pH;
     }
+    
+    public int getIt() {
+    	return it;
+    }
+    
+    public int getTh()
+    {
+    	return thr;
+    }
+    
+    public float getConf()
+    {
+    	return conf;
+    }
+    
+    public int getHos()
+    {
+    	return hos;
+    }
+    
+    
 
     public Classifier entrenatuEreduOptimoa(Instances train)
     {

@@ -1,9 +1,12 @@
 import weka.classifiers.Evaluation;
+import weka.classifiers.meta.AdaBoostM1;
+import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import weka.classifiers.Classifier;
 
@@ -48,6 +51,23 @@ public class KalitateEstimatzaile {
         imprimatuEstatistikak("ACCURACY", accuracyList);
         imprimatuEstatistikak("F-MEASURE", fMeasureList);
     }
+    
+    private static void kFCV(int folds, Instances all) throws Exception
+    {
+    	PartiketaSortzailea pS = new PartiketaSortzailea(all);
+    	pS.prepareKFCV(folds);
+    	
+    	
+    	for (int i = 1; i <= folds; i++)
+    	{
+    		Instances data[] = pS.getFold(i - 1);
+    		Classifier clasi = OptimalModelCreator.getOpc().entrenatuEreduOptimoa(data[0]);
+    		Evaluation eval = new Evaluation(data[0]);
+    		eval.evaluateModel(clasi, data[1]);
+    		idatziReportea(folds + "FCV - " + i, eval);
+    	}
+    	
+    }
 
     private static void imprimatuEstatistikak(String metrika, List<Double> balioak) {
         double sum = 0;
@@ -77,29 +97,40 @@ public class KalitateEstimatzaile {
         idatziReportea("Hold Out %30", eval);
     }
 
-    /*public static void ezZintzoa(Instances all) throws Exception
+    private static void ezZintzoa(Instances all) throws Exception
     {
-        Classifier clasi = OptimalModelCreator.getOpc().entrenatuEreduOptimoa(all);
-        
-        
-
-        Evaluation eval = new Evaluation(all);
-        eval.evaluateModel(clasi, all);
-        idatziReportea("Ez zintzoa", eval);
-    }*/
-
-    public static void ebaluatu(String pathToDataset) {
+    	PartiketaSortzailea ps = new PartiketaSortzailea(all);
+    	Instances data[] = ps.HoldOut(0, false, 0);;
+    	
+    	AdaBoostM1 adaboost = null;
+        try{
+            J48 j48 = new J48();
+            adaboost = new AdaBoostM1();
+            adaboost.setNumIterations(OptimalModelCreator.getOpc().getIt());
+            adaboost.setWeightThreshold(OptimalModelCreator.getOpc().getTh());
+            j48.setConfidenceFactor(OptimalModelCreator.getOpc().getConf());
+            j48.setMinNumObj(OptimalModelCreator.getOpc().getHos());
+            adaboost.setClassifier(j48);   
+        } catch (Exception e) {
+           e.printStackTrace();
+        }
+    	Evaluation eval = new Evaluation(data[0]);
+    	eval.crossValidateModel(adaboost, all, 5, new Random(1));
+        idatziReportea("5FCV - Ez Zintzoa", eval);
+    }
+    
+    public static void ebaluatu(Instances all) {
 
         try
         {
-            DataSource ds = new DataSource(pathToDataset);
-            Instances all = ds.getDataSet();
             
-            //ezZintzoa(all);
+            ezZintzoa(all);
             
             holdOut(all);
             
             repeatedStratifiedHoldOut(all, 10, 30);
+            
+            kFCV(5, all);
         }
         catch (Exception e)
         {

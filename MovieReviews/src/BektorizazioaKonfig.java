@@ -6,13 +6,16 @@ public class BektorizazioaKonfig {
 	private boolean useTF;
 	private boolean useIDF;
 	private boolean useWordCounts;
+	private static BektorizazioaKonfig bK = null;
 	
-	public BektorizazioaKonfig(int wordsToKeep, boolean useStemmer, boolean useTF, boolean useIDF, boolean useWordCounts) {
-		this.wordsToKeep = wordsToKeep;
-		this.useStemmer = useStemmer;
-		this.useTF = useTF;
-		this.useIDF = useIDF;
-		this.useWordCounts = useWordCounts;
+	private BektorizazioaKonfig() {
+	}
+	
+	public static BektorizazioaKonfig getBK()
+	{
+		if (bK == null)
+			bK = new BektorizazioaKonfig();
+		return bK;
 	}
 	
 	public int getWordsToKeep() {

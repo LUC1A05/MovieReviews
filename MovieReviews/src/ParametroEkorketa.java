@@ -8,13 +8,18 @@ import weka.classifiers.trees.J48;
 
 public class ParametroEkorketa {
 
+	
+	public ParametroEkorketa()
+	{
+		
+	}
 	/**
 	 * @param train
 	 * @param dev
 	 * @throws Exception
 	 */
-//	public void parametroEkorketa(Instances train, Instances dev) throws Exception {
-	public static void main(String args[]) throws Exception{
+	public static void ParametroEkorketa(Instances train, Instances dev) throws Exception {
+//	public static void main(String args[]) throws Exception{
 
 		DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
 		DataSource tDev = new DataSource("dev_aurreprozesatuta.arff");
@@ -56,13 +61,18 @@ public class ParametroEkorketa {
 		int hosOnena = 0;
 		
 		for(int i : iterazioak) {
-			System.out.println("Iterazio: " + i);
+			//System.out.println("Iterazio: " + i);
 			for(int t : threshold) {
-				System.out.println("Threshold: " + t);
+				//System.out.println("Threshold: " + t);
 				for(float c : confidence) {
 					System.out.println("Confidence: " + c);
 					for(int h=(int) minHosto; h<=maxHosto; h++) {
 						System.out.println("Hostoa: " + h);
+					//System.out.println("Confidence: " + c);
+					for(int h=1; h<=train.numInstances(); h++) {
+						
+						//System.out.println("Hosto: " + h);
+						
 						OptimalModelCreator.getOpc().setParametroOptimoak(i, t, c, h);
 						AdaBoostM1 adaboost = (AdaBoostM1) OptimalModelCreator.getOpc().entrenatuEreduOptimoa(train);
 						
@@ -78,15 +88,16 @@ public class ParametroEkorketa {
 							hosOnena = h;
 							System.out.println(maxFMeasure);
 						}
-						
-					
 					}
 				}
 			}
 		}
 		OptimalModelCreator.getOpc().setParametroOptimoak(itOnena, thrOnena, confOnena, hosOnena);
-		
-		
+		System.out.println("Optimizazio emaitzak:");
+		System.out.println("Iterazioak: " + itOnena);
+		System.out.println("Threshold: " + thrOnena);
+		System.out.println("Konfiantza: " + confOnena);
+		System.out.println("Hostoak: " + hosOnena);
 	}
 
 }
