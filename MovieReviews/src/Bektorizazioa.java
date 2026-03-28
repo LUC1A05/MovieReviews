@@ -10,11 +10,13 @@ import weka.filters.unsupervised.attribute.StringToWordVector;
 
 public class Bektorizazioa {
 	
+	private BektorizazioaKonfig konfig;
 	private File hiztegia;
 	
-	public Bektorizazioa()
+	public Bektorizazioa(BektorizazioaKonfig konfig, String hiztPath)
 	{
-		
+		this.konfig = konfig;
+		this.hiztegia = new File(hiztPath);
 	}
 	
 	
@@ -38,6 +40,7 @@ public class Bektorizazioa {
 		StringToWordVector stwv = new StringToWordVector();
 		//AlphabeticTokenizer hitz alfabetikoak onartzen ditu soilik
 		stwv.setTokenizer(new AlphabeticTokenizer());
+		stwv.setWordsToKeep(konfig.getWordsToKeep());
 		//Konektore motako hitzak ezabatzen ditu, ez baitute baliorik ematen
 		stwv.setStopwordsHandler(new Rainbow());
 		//false -> soilik agertzen den ala ez bueltatuko du
@@ -45,8 +48,8 @@ public class Bektorizazioa {
 		stwv.setOutputWordCounts(false);
 		//TF eta IDF transformazioak hartu ala ez deskribatu
 		//ALDATU ESPERIMENTAZIORAKO
-		stwv.setTFTransform(false);
-		stwv.setIDFTransform(false);
+		stwv.setTFTransform(konfig.getUseTF());
+		stwv.setIDFTransform(konfig.getUseIDF());
 		//Hitz guztiak minuskulaz jartzen ditu
 		stwv.setLowerCaseTokens(true);
 		//atributu izenetan prefijoa jarri kolisioak sahiesteko
@@ -55,7 +58,9 @@ public class Bektorizazioa {
 		stwv.setDictionaryFileToSaveTo(hiztegia);
 		//Hitzak erroetan bihurtzen ditu, beraz esanhai bereko hitzak bateratzen ditu
 		//ALDATU ESPERIMENTAZIORAKO
-		stwv.setStemmer(new weka.core.stemmers.LovinsStemmer());
+		if (konfig.getUseStemmer()) {
+			stwv.setStemmer(new weka.core.stemmers.LovinsStemmer());			
+		}
 		//atributuak ezarri
 		stwv.setInputFormat(data);
 		

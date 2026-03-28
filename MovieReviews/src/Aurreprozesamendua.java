@@ -57,7 +57,7 @@ public class Aurreprozesamendua {
         String trainOut = rootDir + "/train_processed";
         String devOut = rootDir + "/dev_processed";
         String testOut = rootDir + "/test_blind_processed";
-
+        
         processFolder(new File(rootDir + "/train"), new File(trainOut));
         processFolder(new File(rootDir + "/dev"), new File(devOut));
         processFolder(new File(rootDir + "/test_blind"), new File(testOut));
@@ -70,7 +70,11 @@ public class Aurreprozesamendua {
         {
         	//kopia prozesatua gordeko duen fitxategia ez bada existitzen
             if (!destination.exists())
-                destination.mkdirs();
+            {
+            	System.out.println("Sortu da " + destination.getAbsolutePath());
+            	destination.mkdirs();
+            }
+                
             
             
             File[] files = source.listFiles();
