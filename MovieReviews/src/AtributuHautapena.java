@@ -8,8 +8,13 @@ import weka.filters.unsupervised.attribute.Remove;
 
 public class AtributuHautapena {
 	
-	private static int rankN;
-	private static int[] selected;
+	private int rankN;
+	private int[] selected;
+	
+	public AtributuHautapena()
+	{
+		
+	}
 	
 	public Instances selectAttributes(Instances data) throws Exception {
 		AttributeSelection selector = new AttributeSelection();
