@@ -21,7 +21,7 @@ public class ParametroEkorketa {
 	public static void ParametroEkorketa(Instances train, Instances dev) throws Exception {
 //	public static void main(String args[]) throws Exception{
 
-		DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
+		/*DataSource tSource = new DataSource("train_aurreprozesatuta.arff");
 		DataSource tDev = new DataSource("dev_aurreprozesatuta.arff");
 		
 		Instances train = tSource.getDataSet();
@@ -29,7 +29,7 @@ public class ParametroEkorketa {
 		
 		train.setClassIndex(train.numAttributes() - 1);
 		dev.setClassIndex(dev.numAttributes() - 1);
-		train.classAttribute().setStringValue("Klasea");
+		train.classAttribute().setStringValue("Klasea");*/
 		
 //		//Lo tengo puesto para hacer pruebas
 //		StringToWordVector stwv = new StringToWordVector();
@@ -65,11 +65,8 @@ public class ParametroEkorketa {
 			for(int t : threshold) {
 				//System.out.println("Threshold: " + t);
 				for(float c : confidence) {
-					System.out.println("Confidence: " + c);
-					for(int h=(int) minHosto; h<=maxHosto; h++) {
-						System.out.println("Hostoa: " + h);
 					//System.out.println("Confidence: " + c);
-					for(int h=1; h<=train.numInstances(); h++) {
+					for(int h=(int) minHosto; h<=maxHosto; h++) {
 						
 						//System.out.println("Hosto: " + h);
 						

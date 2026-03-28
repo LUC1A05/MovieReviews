@@ -44,8 +44,8 @@ public class MainDatuZientzia
 			train = bek.bektorizatu(train);
 			dev = bek.bektorizatufix(dev);
 			
-			DatuAnalisia.datuSortaBekAnalisia(train_bek);
-			DatuAnalisia.datuSortaBekAnalisia(dev_bek);
+			DatuAnalisia.datuSortaBekAnalisia(train);
+			DatuAnalisia.datuSortaBekAnalisia(dev);
 			
 			AtributuHautapena aH = new AtributuHautapena();
 			train = aH.selectAttributes(train);
