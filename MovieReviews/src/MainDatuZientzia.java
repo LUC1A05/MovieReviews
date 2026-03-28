@@ -50,8 +50,9 @@ public class MainDatuZientzia
 			System.out.println("Atrib kop " + train.numAttributes());
 			System.out.println("Atrib kop " + dev.numAttributes());
 
-			
+			int rankN = Integer.parseInt(args[6]);
 			AtributuHautapena aH = new AtributuHautapena();
+			aH.aldatuRank(rankN);
 			train = aH.selectAttributes(train);
 			dev = aH.removeAttributes(dev);
 			System.out.println("Atrib kop " + train.numAttributes());
