@@ -36,7 +36,6 @@ public class Bektorizazioa {
 	 * @throws Exception 
 	 */
 	public Instances bektorizatu(Instances data) throws Exception {
-		hiztegia = new File("./dictionary.txt");
 		StringToWordVector stwv = new StringToWordVector();
 		//AlphabeticTokenizer hitz alfabetikoak onartzen ditu soilik
 		stwv.setTokenizer(new AlphabeticTokenizer());
@@ -87,7 +86,7 @@ public class Bektorizazioa {
 	 */
 	public Instances bektorizatufix(Instances data) throws Exception {
 		FixedDictionaryStringToWordVector fd = new FixedDictionaryStringToWordVector();
-		fd.setDictionaryFile(new File("./dictionary.txt"));
+		fd.setDictionaryFile(hiztegia);
 		//ALDATU esperimentaziorako
 		fd.setTFTransform(konfig.getUseTF());
 		fd.setIDFTransform(konfig.getUseIDF());
