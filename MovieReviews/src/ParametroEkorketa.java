@@ -44,16 +44,16 @@ public class ParametroEkorketa {
         
         //Valores de prueba, luego pondré los "reales"
         //AdaBoostM1
-        int[] iterazioak = {50, 100}; 
+        int[] iterazioak = {100, 150, 200}; 
         int[] threshold = {100};
         
         //J48
-        float[] confidence = {0.1f, 0.25f}; 
+        float[] confidence = {0.1f, 0.25f, 0.4f}; 
         int n = train.numInstances();
         double maxHosto = n * 0.05;
         double minHosto = n * 0.01;
         int step = (int) minHosto;
-        int[] hostoak = {10, 20, 30}; // Valores fijos, no porcentajes.
+        int[] hostoak = {10, 15, 20}; // Valores fijos, no porcentajes.
         double maxFMeasure = 0;
         int itOnena = 0;
         int thrOnena = 0;
