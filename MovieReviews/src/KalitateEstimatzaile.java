@@ -26,7 +26,7 @@ public class KalitateEstimatzaile {
         System.out.println(report);
     }
     
-    public static void repeatedStratifiedHoldOut(Instances all, int rep, double perc) throws Exception
+    public static void repeatedStratifiedHoldOut(Instances all, int rep, double perc, int rankN) throws Exception
     {
 
         List<Double> accuracyList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class KalitateEstimatzaile {
 
         for (int i = 0; i < rep; i++) {
             PartiketaSortzailea ps = new PartiketaSortzailea(all);
-            
+            ps.setRank(rankN);
             Instances[] datuak = ps.HoldOut(perc, true, i); 
             
             Instances trainSet = datuak[0];
@@ -52,9 +52,10 @@ public class KalitateEstimatzaile {
         imprimatuEstatistikak("F-MEASURE", fMeasureList);
     }
     
-    private static void kFCV(int folds, Instances all) throws Exception
+    private static void kFCV(int folds, Instances all, int rankN) throws Exception
     {
     	PartiketaSortzailea pS = new PartiketaSortzailea(all);
+    	pS.setRank(rankN);
     	pS.prepareKFCV(folds);
     	
     	
@@ -85,9 +86,10 @@ public class KalitateEstimatzaile {
         System.out.printf("Desbiderapen tipikoa: %.4f\n", desbideraketa);
     }
 
-    public static void holdOut(Instances all) throws Exception
+    public static void holdOut(Instances all, int rankN) throws Exception
     {
     	PartiketaSortzailea ps = new PartiketaSortzailea(all);
+    	ps.setRank(rankN);
     	Instances datuak[] = ps.HoldOut(30, false, 0);
     	
         Classifier clasi = OptimalModelCreator.getOpc().entrenatuEreduOptimoa(datuak[0]);
@@ -97,9 +99,10 @@ public class KalitateEstimatzaile {
         idatziReportea("Hold Out %30", eval);
     }
 
-    private static void ezZintzoa(Instances all) throws Exception
+    private static void ezZintzoa(Instances all, int rankN) throws Exception
     {
     	PartiketaSortzailea ps = new PartiketaSortzailea(all);
+    	ps.setRank(rankN);
     	Instances data[] = ps.HoldOut(0, false, 0);;
     	
     	AdaBoostM1 adaboost = null;
@@ -119,19 +122,19 @@ public class KalitateEstimatzaile {
         idatziReportea("5FCV - Ez Zintzoa", eval);
     }
     
-    public static void ebaluatu(Instances all) {
+    public static void ebaluatu(Instances all, int rankN) {
 
         try
         {
-        	all.setClassIndex(all.numAttributes() - 1);
+        	all.setClassIndex(all.attribute("class").index());
             
-            ezZintzoa(all);
+            //ezZintzoa(all, rankN);
             
-            holdOut(all);
+            //holdOut(all, rankN);
             
-            repeatedStratifiedHoldOut(all, 10, 30);
+            repeatedStratifiedHoldOut(all, 10, 30, rankN);
             
-            kFCV(5, all);
+            //kFCV(5, all, rankN);
         }
         catch (Exception e)
         {

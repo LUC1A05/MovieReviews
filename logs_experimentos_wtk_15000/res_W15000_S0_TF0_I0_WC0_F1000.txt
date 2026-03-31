@@ -1,0 +1,73 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 31425
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 31425
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 31425
+Atrib kop 31425
+Filtroaren ostean 400
+Atrib kop 1001
+Atrib kop 1001
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 10
+0.7826843555951806
+0.785
+Iterazio: 50
+0.7878287887045147
+0.7878391488030041
+0.8026079580796562
+0.8226949019607843
+Iterazio: 100
+Optimizazio emaitzak:
+Iterazioak: 50
+Threshold: 100
+Konfiantza: 0.25
+Hostoak: 24
+Filtroaren ostean 0
+========== 5FCV - Ez Zintzoa ========
+
+Summary
+Correctly Classified Instances        1104               69      %
+Incorrectly Classified Instances       496               31      %
+Kappa statistic                          0.38  
+Mean absolute error                      0.3124
+Root mean squared error                  0.5294
+Relative absolute error                 62.476  %
+Root relative squared error            105.8853 %
+Total Number of Instances             1600     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.687    0.307    0.694      0.687    0.691      0.380    0.775     0.770     pos
+                 0.693    0.313    0.686      0.693    0.689      0.380    0.775     0.785     neg
+Weighted Avg.    0.690    0.310    0.690      0.690    0.690      0.380    0.775     0.778     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 554 252 |   a = pos
+ 244 550 |   b = neg
+
+Filtroaren ostean 480

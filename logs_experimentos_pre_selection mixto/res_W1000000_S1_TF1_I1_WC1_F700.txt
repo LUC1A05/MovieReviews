@@ -1,0 +1,149 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 317698
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 317698
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 317698
+Atrib kop 317698
+Filtroaren ostean 400
+Atrib kop 701
+Atrib kop 701
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 50
+0.6614095238095239
+0.6811275300187796
+0.7157852404487625
+Iterazio: 70
+Iterazio: 100
+0.7279350827432048
+Optimizazio emaitzak:
+Iterazioak: 100
+Threshold: 100
+Konfiantza: 0.25
+Hostoak: 20
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 0
+========== 5FCV - Ez Zintzoa ========
+
+Summary
+Correctly Classified Instances        1126               70.375  %
+Incorrectly Classified Instances       474               29.625  %
+Kappa statistic                          0.4074
+Mean absolute error                      0.3037
+Root mean squared error                  0.5253
+Relative absolute error                 60.7478 %
+Root relative squared error            105.0538 %
+Total Number of Instances             1600     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.710    0.302    0.704      0.710    0.707      0.407    0.769     0.741     pos
+                 0.698    0.290    0.703      0.698    0.700      0.407    0.769     0.786     neg
+Weighted Avg.    0.704    0.296    0.704      0.704    0.704      0.407    0.769     0.763     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 572 234 |   a = pos
+ 240 554 |   b = neg
+
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+========== Hold Out %30 ========
+
+Summary
+Correctly Classified Instances         297               61.875  %
+Incorrectly Classified Instances       183               38.125  %
+Kappa statistic                          0.2365
+Mean absolute error                      0.3843
+Root mean squared error                  0.5621
+Relative absolute error                 76.8519 %
+Root relative squared error            112.3998 %
+Total Number of Instances              480     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.460    0.224    0.671      0.460    0.546      0.249    0.691     0.665     pos
+                 0.776    0.540    0.592      0.776    0.671      0.249    0.691     0.708     neg
+Weighted Avg.    0.619    0.383    0.631      0.619    0.609      0.249    0.691     0.687     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 110 129 |   a = pos
+  54 187 |   b = neg
+
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 480
+========== Repeated Stratified Hold Out ========
+
+
+
+--- ACCURACY ---
+Bataz beste: 60.6042
+Desbiderapen tipikoa: 3.0991
+
+--- F-MEASURE ---
+Bataz beste: 0.5930
+Desbiderapen tipikoa: 0.0408
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 320
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true
+Filtroaren ostean 320
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: true TF: true IDF: true WC: true

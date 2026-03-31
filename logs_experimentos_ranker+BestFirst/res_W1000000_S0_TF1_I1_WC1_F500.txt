@@ -1,0 +1,269 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 131
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 131
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 131
+Atrib kop 131
+Filtroaren ostean 400
+Atrib kop 131
+Atrib kop 131
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 50
+0.7577055458934772
+0.7700867379006915
+Iterazio: 100
+0.7701617927846448
+Optimizazio emaitzak:
+Iterazioak: 100
+Threshold: 100
+Konfiantza: 0.1
+Hostoak: 2
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 0
+========== 5FCV - Ez Zintzoa ========
+
+Summary
+Correctly Classified Instances        1091               68.1875 %
+Incorrectly Classified Instances       509               31.8125 %
+Kappa statistic                          0.3635
+Mean absolute error                      0.3202
+Root mean squared error                  0.5187
+Relative absolute error                 64.0386 %
+Root relative squared error            103.7416 %
+Total Number of Instances             1600     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.705    0.341    0.677      0.705    0.691      0.364    0.760     0.731     pos
+                 0.659    0.295    0.687      0.659    0.673      0.364    0.760     0.773     neg
+Weighted Avg.    0.682    0.318    0.682      0.682    0.682      0.364    0.760     0.752     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 568 238 |   a = pos
+ 271 523 |   b = neg
+
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+========== Hold Out %30 ========
+
+Summary
+Correctly Classified Instances         311               64.7917 %
+Incorrectly Classified Instances       169               35.2083 %
+Kappa statistic                          0.2959
+Mean absolute error                      0.3492
+Root mean squared error                  0.5292
+Relative absolute error                 69.8315 %
+Root relative squared error            105.8312 %
+Total Number of Instances              480     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.653    0.357    0.645      0.653    0.649      0.296    0.722     0.684     pos
+                 0.643    0.347    0.651      0.643    0.647      0.296    0.722     0.749     neg
+Weighted Avg.    0.648    0.352    0.648      0.648    0.648      0.296    0.722     0.717     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 156  83 |   a = pos
+  86 155 |   b = neg
+
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 480
+========== Repeated Stratified Hold Out ========
+
+
+
+--- ACCURACY ---
+Bataz beste: 66.0833
+Desbiderapen tipikoa: 1.6132
+
+--- F-MEASURE ---
+Bataz beste: 0.6608
+Desbiderapen tipikoa: 0.0162
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 320
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 320
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 320
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 320
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Filtroaren ostean 320
+========== 5FCV - 1 ========
+
+Summary
+Correctly Classified Instances         223               69.6875 %
+Incorrectly Classified Instances        97               30.3125 %
+Kappa statistic                          0.3937
+Mean absolute error                      0.3241
+Root mean squared error                  0.5129
+Relative absolute error                 64.8269 %
+Root relative squared error            102.5831 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.708    0.314    0.695      0.708    0.702      0.394    0.732     0.690     pos
+                 0.686    0.292    0.699      0.686    0.692      0.394    0.732     0.738     neg
+Weighted Avg.    0.697    0.303    0.697      0.697    0.697      0.394    0.732     0.714     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 114  47 |   a = pos
+  50 109 |   b = neg
+
+========== 5FCV - 2 ========
+
+Summary
+Correctly Classified Instances         209               65.3125 %
+Incorrectly Classified Instances       111               34.6875 %
+Kappa statistic                          0.3061
+Mean absolute error                      0.3606
+Root mean squared error                  0.5488
+Relative absolute error                 72.1275 %
+Root relative squared error            109.7636 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.665    0.358    0.652      0.665    0.658      0.306    0.715     0.690     pos
+                 0.642    0.335    0.654      0.642    0.648      0.306    0.715     0.744     neg
+Weighted Avg.    0.653    0.347    0.653      0.653    0.653      0.306    0.715     0.717     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 107  54 |   a = pos
+  57 102 |   b = neg
+
+========== 5FCV - 3 ========
+
+Summary
+Correctly Classified Instances         213               66.5625 %
+Incorrectly Classified Instances       107               33.4375 %
+Kappa statistic                          0.3311
+Mean absolute error                      0.3293
+Root mean squared error                  0.5302
+Relative absolute error                 65.8645 %
+Root relative squared error            106.0448 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.683    0.352    0.663      0.683    0.673      0.331    0.743     0.679     pos
+                 0.648    0.317    0.669      0.648    0.658      0.331    0.743     0.761     neg
+Weighted Avg.    0.666    0.335    0.666      0.666    0.666      0.331    0.743     0.720     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 110  51 |   a = pos
+  56 103 |   b = neg
+
+========== 5FCV - 4 ========
+
+Summary
+Correctly Classified Instances         210               65.625  %
+Incorrectly Classified Instances       110               34.375  %
+Kappa statistic                          0.3128
+Mean absolute error                      0.3566
+Root mean squared error                  0.5455
+Relative absolute error                 71.3267 %
+Root relative squared error            109.1097 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.621    0.308    0.671      0.621    0.645      0.314    0.701     0.678     pos
+                 0.692    0.379    0.643      0.692    0.667      0.314    0.701     0.723     neg
+Weighted Avg.    0.656    0.343    0.657      0.656    0.656      0.314    0.701     0.700     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 100  61 |   a = pos
+  49 110 |   b = neg
+
+========== 5FCV - 5 ========
+
+Summary
+Correctly Classified Instances         215               67.1875 %
+Incorrectly Classified Instances       105               32.8125 %
+Kappa statistic                          0.3431
+Mean absolute error                      0.3419
+Root mean squared error                  0.5302
+Relative absolute error                 68.378  %
+Root relative squared error            106.0523 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.710    0.367    0.665      0.710    0.687      0.344    0.728     0.721     pos
+                 0.633    0.290    0.680      0.633    0.656      0.344    0.728     0.728     neg
+Weighted Avg.    0.672    0.329    0.672      0.672    0.671      0.344    0.728     0.725     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 115  47 |   a = pos
+  58 100 |   b = neg
+

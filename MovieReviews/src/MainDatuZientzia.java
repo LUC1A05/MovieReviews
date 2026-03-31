@@ -35,11 +35,14 @@ public class MainDatuZientzia
 			boolean useIDF = Integer.parseInt(args[4]) == 1;;
 			boolean useWordCounts = Integer.parseInt(args[5]) == 1;
 			BektorizazioaKonfig bK = BektorizazioaKonfig.getBK();
+			
 			bK.setWordsToKeep(wordsToKeep);
 			bK.setUseStemmer(useStemmer);
 			bK.setUseTF(useTF);
 			bK.setUseIDF(useIDF);
 			bK.setUseWordCounts(useWordCounts);
+			BektorizazioaKonfig.getBK().print();
+			
 			Bektorizazioa bek = new Bektorizazioa(bK, "hiztegia_train.txt");
 			train = bek.bektorizatu(train);
 			dev = bek.bektorizatufix(dev);
@@ -71,12 +74,12 @@ public class MainDatuZientzia
 			ds = new DataSource("dev_RAW.arff");
 			all.addAll(ds.getDataSet());
 			
-			KalitateEstimatzaile.ebaluatu(all);
+			KalitateEstimatzaile.ebaluatu(all, rankN);
 			
-			bek = new Bektorizazioa(bK, "hiztegia.txt");
+		/*	bek = new Bektorizazioa(bK, "hiztegia.txt");
 			all = bek.bektorizatu(all);
 			all = aH.selectAttributes(all);
-			Saver.saveOptimalModel(all);
+			Saver.saveOptimalModel(all);*/
 				
 		}
 		catch(Exception e)

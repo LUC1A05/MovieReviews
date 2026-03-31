@@ -1,0 +1,79 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 81877
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 81877
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 81877
+Atrib kop 81877
+Atrib kop 1501
+Atrib kop 1501
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 50
+0.7702252014762371
+0.7878287887045147
+0.8026674033565432
+0.8027563632259157
+Iterazio: 100
+0.8125365476392582
+0.825241355099175
+Optimizazio emaitzak:
+Iterazioak: 100
+Threshold: 100
+Konfiantza: 0.25
+Hostoak: 20
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: true IDF: true WC: true
+========== Repeated Stratified Hold Out ========
+
+
+
+--- ACCURACY ---
+Bataz beste: 67.9167
+Desbiderapen tipikoa: 0.9456
+
+--- F-MEASURE ---
+Bataz beste: 0.6789
+Desbiderapen tipikoa: 0.0094

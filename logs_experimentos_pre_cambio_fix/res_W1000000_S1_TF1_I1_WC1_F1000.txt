@@ -1,0 +1,235 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 18020
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 18020
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 18020
+Atrib kop 18020
+Filtroaren ostean 400
+Atrib kop 1001
+Atrib kop 1001
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 50
+0.6778107384663832
+0.7044097639055622
+0.7118366172875018
+Iterazio: 70
+0.7225537659610372
+Iterazio: 100
+Optimizazio emaitzak:
+Iterazioak: 70
+Threshold: 100
+Konfiantza: 0.1
+Hostoak: 20
+Filtroaren ostean 0
+========== 5FCV - Ez Zintzoa ========
+
+Summary
+Correctly Classified Instances        1083               67.6875 %
+Incorrectly Classified Instances       517               32.3125 %
+Kappa statistic                          0.3536
+Mean absolute error                      0.328 
+Root mean squared error                  0.5325
+Relative absolute error                 65.6134 %
+Root relative squared error            106.5036 %
+Total Number of Instances             1600     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.695    0.341    0.674      0.695    0.684      0.354    0.750     0.731     pos
+                 0.659    0.305    0.680      0.659    0.669      0.354    0.750     0.766     neg
+Weighted Avg.    0.677    0.323    0.677      0.677    0.677      0.354    0.750     0.748     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 560 246 |   a = pos
+ 271 523 |   b = neg
+
+Filtroaren ostean 480
+========== Hold Out %30 ========
+
+Summary
+Correctly Classified Instances         281               58.5417 %
+Incorrectly Classified Instances       199               41.4583 %
+Kappa statistic                          0.1696
+Mean absolute error                      0.4197
+Root mean squared error                  0.5649
+Relative absolute error                 83.9427 %
+Root relative squared error            112.9596 %
+Total Number of Instances              480     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.406    0.237    0.630      0.406    0.494      0.181    0.650     0.620     pos
+                 0.763    0.594    0.564      0.763    0.649      0.181    0.650     0.653     neg
+Weighted Avg.    0.585    0.416    0.597      0.585    0.572      0.181    0.650     0.636     
+
+Confusion Matrix
+   a   b   <-- classified as
+  97 142 |   a = pos
+  57 184 |   b = neg
+
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+========== Repeated Stratified Hold Out ========
+
+
+
+--- ACCURACY ---
+Bataz beste: 58.9167
+Desbiderapen tipikoa: 2.5152
+
+--- F-MEASURE ---
+Bataz beste: 0.5663
+Desbiderapen tipikoa: 0.0379
+Filtroaren ostean 320
+Filtroaren ostean 320
+Filtroaren ostean 320
+Filtroaren ostean 320
+Filtroaren ostean 320
+========== 5FCV - 1 ========
+
+Summary
+Correctly Classified Instances         167               52.1875 %
+Incorrectly Classified Instances       153               47.8125 %
+Kappa statistic                          0.0481
+Mean absolute error                      0.4624
+Root mean squared error                  0.6412
+Relative absolute error                 92.4818 %
+Root relative squared error            128.2459 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.161    0.113    0.591      0.161    0.254      0.070    0.632     0.633     pos
+                 0.887    0.839    0.511      0.887    0.648      0.070    0.632     0.632     neg
+Weighted Avg.    0.522    0.474    0.551      0.522    0.450      0.070    0.632     0.632     
+
+Confusion Matrix
+   a   b   <-- classified as
+  26 135 |   a = pos
+  18 141 |   b = neg
+
+========== 5FCV - 2 ========
+
+Summary
+Correctly Classified Instances         209               65.3125 %
+Incorrectly Classified Instances       111               34.6875 %
+Kappa statistic                          0.3073
+Mean absolute error                      0.3635
+Root mean squared error                  0.5332
+Relative absolute error                 72.6993 %
+Root relative squared error            106.6336 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.528    0.220    0.708      0.528    0.605      0.318    0.718     0.700     pos
+                 0.780    0.472    0.620      0.780    0.691      0.318    0.718     0.720     neg
+Weighted Avg.    0.653    0.345    0.664      0.653    0.648      0.318    0.718     0.709     
+
+Confusion Matrix
+   a   b   <-- classified as
+  85  76 |   a = pos
+  35 124 |   b = neg
+
+========== 5FCV - 3 ========
+
+Summary
+Correctly Classified Instances         203               63.4375 %
+Incorrectly Classified Instances       117               36.5625 %
+Kappa statistic                          0.2703
+Mean absolute error                      0.3795
+Root mean squared error                  0.5416
+Relative absolute error                 75.8952 %
+Root relative squared error            108.3136 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.460    0.189    0.712      0.460    0.558      0.289    0.696     0.676     pos
+                 0.811    0.540    0.597      0.811    0.688      0.289    0.696     0.667     neg
+Weighted Avg.    0.634    0.363    0.655      0.634    0.623      0.289    0.696     0.672     
+
+Confusion Matrix
+   a   b   <-- classified as
+  74  87 |   a = pos
+  30 129 |   b = neg
+
+========== 5FCV - 4 ========
+
+Summary
+Correctly Classified Instances         180               56.25   %
+Incorrectly Classified Instances       140               43.75   %
+Kappa statistic                          0.1284
+Mean absolute error                      0.4423
+Root mean squared error                  0.6169
+Relative absolute error                 88.4699 %
+Root relative squared error            123.381  %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.255    0.126    0.672      0.255    0.369      0.164    0.643     0.634     pos
+                 0.874    0.745    0.537      0.874    0.665      0.164    0.643     0.651     neg
+Weighted Avg.    0.563    0.434    0.605      0.563    0.516      0.164    0.643     0.642     
+
+Confusion Matrix
+   a   b   <-- classified as
+  41 120 |   a = pos
+  20 139 |   b = neg
+
+========== 5FCV - 5 ========
+
+Summary
+Correctly Classified Instances         185               57.8125 %
+Incorrectly Classified Instances       135               42.1875 %
+Kappa statistic                          0.1613
+Mean absolute error                      0.4276
+Root mean squared error                  0.5926
+Relative absolute error                 85.5182 %
+Root relative squared error            118.5176 %
+Total Number of Instances              320     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.340    0.177    0.663      0.340    0.449      0.185    0.646     0.641     pos
+                 0.823    0.660    0.549      0.823    0.658      0.185    0.646     0.660     neg
+Weighted Avg.    0.578    0.416    0.606      0.578    0.552      0.185    0.646     0.650     
+
+Confusion Matrix
+   a   b   <-- classified as
+  55 107 |   a = pos
+  28 130 |   b = neg
+

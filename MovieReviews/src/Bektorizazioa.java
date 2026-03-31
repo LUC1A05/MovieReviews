@@ -3,15 +3,24 @@ import java.io.File;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.core.stopwords.Rainbow;
-import weka.core.tokenizers.AlphabeticTokenizer;
+import weka.core.tokenizers.NGramTokenizer;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.FixedDictionaryStringToWordVector;
 import weka.filters.unsupervised.attribute.StringToWordVector;
+// Nuevos imports para la selección de atributos
+import weka.attributeSelection.BestFirst;
+import weka.attributeSelection.CfsSubsetEval;
+import weka.attributeSelection.InfoGainAttributeEval;
+import weka.attributeSelection.Ranker;
+import weka.filters.supervised.attribute.AttributeSelection;
+import weka.core.stemmers.LovinsStemmer;
 
 public class Bektorizazioa {
 	
 	private BektorizazioaKonfig konfig;
 	private File hiztegia;
+	
+
 	
 	public Bektorizazioa(BektorizazioaKonfig konfig, String hiztPath)
 	{
@@ -19,95 +28,63 @@ public class Bektorizazioa {
 		this.hiztegia = new File(hiztPath);
 	}
 	
-	
-	/**
-	 * @param .arff duen path-a
-	 * @return Pasatutako instantziei stwv pasatuko zaio
-	 * @throws Exception 
-	 */
-	public Instances bektorizatu(String path) throws Exception {
-		Instances data = pathToArff(path);
-		return bektorizatu(data);
-	}
-	
-	/**
-	 * @param data
-	 * @return Pasatutako instantziei stwv pasatuko zaio
-	 * @throws Exception 
-	 */
 	public Instances bektorizatu(Instances data) throws Exception {
-		hiztegia = new File("./dictionary.txt");
+		
+		// 1. STRING TO WORD VECTOR (Generación de términos)
 		StringToWordVector stwv = new StringToWordVector();
-		//AlphabeticTokenizer hitz alfabetikoak onartzen ditu soilik
-		stwv.setTokenizer(new AlphabeticTokenizer());
-		stwv.setWordsToKeep(konfig.getWordsToKeep());
-		//Konektore motako hitzak ezabatzen ditu, ez baitute baliorik ematen
-		stwv.setStopwordsHandler(new Rainbow());
-		//false -> soilik agertzen den ala ez bueltatuko du
-		//true -> maiztasuna ematen du
-		stwv.setOutputWordCounts(konfig.getUseWordCounts());
-		//TF eta IDF transformazioak hartu ala ez deskribatu
-		//ALDATU ESPERIMENTAZIORAKO
-		stwv.setTFTransform(konfig.getUseTF());
-		stwv.setIDFTransform(konfig.getUseIDF());
-		//Hitz guztiak minuskulaz jartzen ditu
-		stwv.setLowerCaseTokens(true);
-		//atributu izenetan prefijoa jarri kolisioak sahiesteko
-		stwv.setAttributeNamePrefix("W_");
-		//Hiztegia fitxategian gorde
-		stwv.setDictionaryFileToSaveTo(hiztegia);
-		//Hitzak erroetan bihurtzen ditu, beraz esanhai bereko hitzak bateratzen ditu
-		//ALDATU ESPERIMENTAZIORAKO
-		if (konfig.getUseStemmer()) {
-			stwv.setStemmer(new weka.core.stemmers.LovinsStemmer());			
-		}
-		//atributuak ezarri
-		stwv.setInputFormat(data);
+        NGramTokenizer tokenizer = new NGramTokenizer();
+        tokenizer.setNGramMinSize(1); 
+        tokenizer.setNGramMaxSize(2); 
+        stwv.setTokenizer(tokenizer);
+        
+        stwv.setWordsToKeep(konfig.getWordsToKeep());
+        stwv.setStopwordsHandler(new Rainbow());
+        stwv.setOutputWordCounts(konfig.getUseWordCounts());
+        stwv.setTFTransform(konfig.getUseTF());
+        stwv.setIDFTransform(konfig.getUseIDF());
+        stwv.setLowerCaseTokens(true);
+        stwv.setAttributeNamePrefix("W_");
+        stwv.setDictionaryFileToSaveTo(hiztegia);
+        stwv.setMinTermFreq(2);
+        
+        if (konfig.getUseStemmer()) {
+            stwv.setStemmer(new LovinsStemmer());            
+        }
+        
+        stwv.setInputFormat(data);
+        Instances postSTWV = Filter.useFilter(data, stwv);
 		
-		Instances ema = Filter.useFilter(data, stwv);
 		
-		return ema;
+		
+		return postSTWV;
 	}
 	
-	
-	/**
-	 * @param .arff duen path-a
-	 * @return Pasatutako instantziei fix dictionary pasatuko zaio
-	 * @throws Exception 
-	 */
-	public Instances bektorizatufix(String path) throws Exception {
-		Instances data = pathToArff(path);
-		return bektorizatufix(data);
-	}
-	
-	/**
-	 * @param data
-	 * @return Pasatutako instantziei fix dictionary pasatuko zaio
-	 * @throws Exception 
-	 */
 	public Instances bektorizatufix(Instances data) throws Exception {
+		// 1. Aplicamos el diccionario fijo (Bigramas + Porter)
 		FixedDictionaryStringToWordVector fd = new FixedDictionaryStringToWordVector();
-		fd.setDictionaryFile(new File("./dictionary.txt"));
-		//ALDATU esperimentaziorako
-		fd.setTFTransform(false);
-		fd.setIDFTransform(false);
-		fd.setLowerCaseTokens(true);
-		fd.setOutputWordCounts(true);
-		fd.setTokenizer(new AlphabeticTokenizer());
-		fd.setAttributeNamePrefix("W_");
-		
-		Rainbow stopWords = new Rainbow();
-		fd.setStopwordsHandler(stopWords);
-		fd.setInputFormat(data);
-		
-		Instances ema = Filter.useFilter(data, fd);
-		return ema;
+        NGramTokenizer tokenizer = new NGramTokenizer();
+        tokenizer.setNGramMinSize(1);
+        tokenizer.setNGramMaxSize(2);
+        fd.setTokenizer(tokenizer);
+        
+        fd.setDictionaryFile(hiztegia);
+        fd.setTFTransform(konfig.getUseTF());
+        fd.setIDFTransform(konfig.getUseIDF());
+        fd.setLowerCaseTokens(true);
+        fd.setOutputWordCounts(konfig.getUseWordCounts());
+        fd.setAttributeNamePrefix("W_");
+        fd.setStopwordsHandler(new Rainbow());
+        fd.setInputFormat(data);
+        
+        Instances ema = Filter.useFilter(data, fd);
+        
+        return ema;
 	}
-	
+
 	private Instances pathToArff(String path) throws Exception {
 		DataSource source = new DataSource(path);
 		Instances data = source.getDataSet();
-		data.setClassIndex(data.numAttributes() - 1);
+		data.setClassIndex(data.attribute("class").index());
 		
 		return data;
 	}

@@ -1,0 +1,119 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 31425
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 31425
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 31425
+Atrib kop 31425
+Filtroaren ostean 400
+Atrib kop 301
+Atrib kop 301
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 50
+0.7675453190726803
+0.7848049198507914
+0.785
+Iterazio: 70
+Iterazio: 100
+Optimizazio emaitzak:
+Iterazioak: 50
+Threshold: 100
+Konfiantza: 0.5
+Hostoak: 5
+Filtroaren ostean 0
+========== 5FCV - Ez Zintzoa ========
+
+Summary
+Correctly Classified Instances        1096               68.5    %
+Incorrectly Classified Instances       504               31.5    %
+Kappa statistic                          0.3699
+Mean absolute error                      0.3144
+Root mean squared error                  0.5385
+Relative absolute error                 62.8776 %
+Root relative squared error            107.6991 %
+Total Number of Instances             1600     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.694    0.324    0.685      0.694    0.689      0.370    0.746     0.734     pos
+                 0.676    0.306    0.685      0.676    0.681      0.370    0.746     0.744     neg
+Weighted Avg.    0.685    0.315    0.685      0.685    0.685      0.370    0.746     0.739     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 559 247 |   a = pos
+ 257 537 |   b = neg
+
+Filtroaren ostean 480
+========== Hold Out %30 ========
+
+Summary
+Correctly Classified Instances         333               69.375  %
+Incorrectly Classified Instances       147               30.625  %
+Kappa statistic                          0.3875
+Mean absolute error                      0.3149
+Root mean squared error                  0.5316
+Relative absolute error                 62.9804 %
+Root relative squared error            106.3009 %
+Total Number of Instances              480     
+
+Detailed Accuracy By Class
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.686    0.299    0.695      0.686    0.691      0.387    0.744     0.709     pos
+                 0.701    0.314    0.693      0.701    0.697      0.387    0.744     0.762     neg
+Weighted Avg.    0.694    0.306    0.694      0.694    0.694      0.387    0.744     0.736     
+
+Confusion Matrix
+   a   b   <-- classified as
+ 164  75 |   a = pos
+  72 169 |   b = neg
+
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+Filtroaren ostean 480
+========== Repeated Stratified Hold Out ========
+
+
+
+--- ACCURACY ---
+Bataz beste: 67.7500
+Desbiderapen tipikoa: 2.0065
+
+--- F-MEASURE ---
+Bataz beste: 0.6775
+Desbiderapen tipikoa: 0.0200
+Filtroaren ostean 320
+Filtroaren ostean 320
+Filtroaren ostean 320
+Filtroaren ostean 320
+Filtroaren ostean 320

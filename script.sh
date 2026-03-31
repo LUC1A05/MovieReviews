@@ -25,12 +25,12 @@ mkdir -p "$LOG_DIR"
 # DEFINICIÓN DEL ESPACIO DE BÚSQUEDA (GRID SEARCH)
 # (Nota: En Bash los arrays se separan por ESPACIOS, no por comas)
 # ==============================================================================
-PARAM_WORDS=(10000 50000 100000)      # p1: WordsToKeep
-PARAM_STEM=(0 1)                 # p2: Use Stemmer
-PARAM_TF=(0 1)                   # p3: Use TF
-PARAM_IDF=(0 1)                  # p4: Use IDF
-PARAM_WC=(0)                   # p5: Use Word Counts
-PARAM_FEAT=(1000)      # p6: Algún parámetro extra (ej. Atributos)
+PARAM_WORDS=(1000000)      # p1: WordsToKeep
+PARAM_STEM=(0)                 # p2: Use Stemmer
+PARAM_TF=(1)                   # p3: Use TF
+PARAM_IDF=(1)                  # p4: Use IDF
+PARAM_WC=(1)                   # p5: Use Word Counts
+PARAM_FEAT=(800 1500 2000)      # p6: Algún parámetro extra (ej. Atributos)
 
 echo "--- Iniciando batería de pruebas para MainDatuZientzia ---"
 echo "Resultados en: $LOG_DIR"
