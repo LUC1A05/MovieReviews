@@ -1,0 +1,4 @@
+Error occurred during initialization of VM
+java.lang.InternalError: Bad level: 3
+	at jdk.internal.misc.VM.initLevel(java.base@17.0.18/VM.java:63)
+	at java.lang.System.initPhase3(java.base@17.0.18/System.java:2260)
