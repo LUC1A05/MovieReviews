@@ -1,0 +1,38 @@
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 590
+Klasea: neg instantzia kopurua: 610
+Klase maximoa: neg
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 669.33
+
+Aurreprozesamendu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 2
+Klasea: pos instantzia kopurua: 216
+Klasea: neg instantzia kopurua: 184
+Klase maximoa: pos
+Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: 665.8525
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: true WC: false
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 1200
+Atributu kopurua: 81877
+Klase maximoa: neg 610 instantziarekin
+
+Bektorizatu ostean ditugun datuak: 
+Instantzia kopurua: 400
+Atributu kopurua: 81877
+Klase maximoa: pos 216 instantziarekin
+Atrib kop 81877
+Atrib kop 81877
+Atrib kop 801
+Atrib kop 801
+Filtroaren ostean 400
+Num instances in train: 1200
+Num instances in dev: 400
+Iterazio: 50
+0.8177912689719917
+Iterazio: 100

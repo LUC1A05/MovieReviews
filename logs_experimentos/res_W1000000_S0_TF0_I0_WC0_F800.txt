@@ -33,5 +33,42 @@ Atrib kop 801
 Filtroaren ostean 400
 Num instances in train: 1200
 Num instances in dev: 400
+Iterazio: 50
+0.8177912689719917
 Iterazio: 100
-0.8078073520296036
+Optimizazio emaitzak:
+Iterazioak: 50
+Threshold: 100
+Konfiantza: 0.1
+Hostoak: 10
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+Bektorizazio konfigurazioa:
+WTK: 1000000 Stemmer: false TF: false IDF: false WC: false
+========== Repeated Stratified Hold Out ========
+
+
+
+--- ACCURACY ---
+Bataz beste: 67.7292
+Desbiderapen tipikoa: 1.0518
+
+--- F-MEASURE ---
+Bataz beste: 0.6771
+Desbiderapen tipikoa: 0.0106

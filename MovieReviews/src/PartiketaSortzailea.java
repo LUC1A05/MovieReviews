@@ -23,7 +23,7 @@ public class PartiketaSortzailea {
 	private Instances[] multzoakProzesatu(Instances trainPart, Instances testPart) throws Exception
 	{
 		//bektorizazioa
-		Bektorizazioa bek = new Bektorizazioa(BektorizazioaKonfig.getBK(), "dict.temp");
+		Bektorizazioa bek = new Bektorizazioa(BektorizazioaKonfig.getBK(), "hiztegia_train.txt");
         BektorizazioaKonfig.getBK().print();
 		
 		Instances trainSet = bek.bektorizatu(trainPart);
