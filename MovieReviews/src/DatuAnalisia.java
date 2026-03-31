@@ -1,8 +1,35 @@
 import weka.core.Instances;
 import weka.core.Utils;
 
+	/**
+	 * Dugun datu-sortar aztertuko duen klasea.
+	 * <p>
+	* <p>
+	 * Klase honek datuen azterketa deskriptiboa burutzen du bi fasetan:
+	 * 1. <b>Aurre-bektorizazioa:</b> Testu gordina aztertzen du (hitz kopuruaren batezbestekoa, instantziak, etab.).
+	 * 2. <b>Post-bektorizazioa:</b> Instantzien atributu kopurua eta klaseen banaketa egiaztatzen ditu.
+	 * </p>
+	 * <p>
+	 * Informazio hau funtsezkoa da datu-sortaren desoreka eta dimentsionaltasuna ulertzeko.
+	 * </p>
+	 *  
+	 */
 public class DatuAnalisia {
 
+	/**
+     * Testu gordinaren gaineko azterketa egiten du.
+     * <p>
+     * Metodo honek honako metrika hauek kalkulatzen ditu:
+     * <ul>
+     * <li>Instantzia eta atributu kopurua.</li>
+     * <li>Klase bakoitzeko instantzia kopurua (nominalCounts erabiliz).</li>
+     * <li>Instantzia gehien duen klasea (Majority Class).</li>
+     * <li>Mezu bakoitzeko hitz kopuruaren batezbestekoa, espazio zuriak erabiliz banatzaile gisa.</li>
+     * </ul>
+     * </p>
+     *
+     * @param data Aztertu beharreko instantzien multzoa, bektorizatu gabe dagoena.
+     */
 	public static void datuSortaAnalisia(Instances data) {
 		System.out.println("\nAurreprozesamendu ostean ditugun datuak: ");
 		
@@ -42,6 +69,18 @@ public class DatuAnalisia {
 		System.out.println("Instantzia bakoitzeko hitz kopuruaren bataz bestekoa: " + batazBeste);
 	}
 
+	/**
+     * Bektorizazio prozesuaren ondorengo datuen egoera aztertzen du.
+     * <p>
+     * Metodo honek honako metrika hauek kalkulatzen ditu:
+     * <ul>
+     * <li>Instantzia eta atributu kopurua.</li>
+     * <li>Klase bakoitzeko instantzia kopurua (nominalCounts erabiliz).</li>
+     * </ul>
+     * </p>
+     *
+     * @param data Aztertu beharreko instantzien multzoa, bektorizatuta dagoena.
+     */
 	public static void datuSortaBekAnalisia(Instances data) {
 		System.out.println("\nBektorizatu ostean ditugun datuak: ");
 		

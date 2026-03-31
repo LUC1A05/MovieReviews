@@ -8,10 +8,28 @@ import weka.core.DenseInstance;
 import weka.core.Instances;
 import weka.core.Utils;
 
+	/** Fitxategi-sisteman dauden testu fitxategiak Weka-ko {@link Instances}
+	 * formatura pasatuko duen klasea
+	 * 
+	 * <p>
+	 * Klase honek Movie Reviews datu-sortaren egitura kudeatzen du.
+	 * <ul>
+	 * <li>Gainbegiratutako datuak: "pos" eta "neg" karpetetan banatutako fitxategiak.</li>
+	 * <li>Gainbegiratu gabeko datuak (Blind): klase gabeko fitxategiak.</li>
+	 * </ul>
+	 * </p>
+	 */
 public class DatuKarga {
 
 	/**
-	 * @param blind gainbegiratua bada False jasoko du eta ez gainbegiratua bada True
+	 * Fitxategiak dauden path-a jaso eta fitxategiak Wekako instantzia multzora bilakatzen ditu
+	 * <p>
+	 * Metodoak bi atributu sortu egingo ditu:
+	 * 1. "balorazioa": String motakoa, iritziaren testu osoa gordetzen du.
+	 * 2. "class": Nominala, {pos, neg} motakoa, iritzia positiboa edo negatiboa den gordeko duen atributua.
+	 * </p>
+	 * @param blind True bada, kargatuko den instantzia multzoa klaserik gabekoa izango da (blind).
+	 * Bestalde, False bada azpikarpetaren arabera klase bat edo beste bat esleituko zaio.
 	 * @param path Datuak aurkitzen diren karpetaren path-a jasoko du.
 	 * @return Instantziak itzuliko ditu, dagokion klasearekin.
 	 * @throws IOException
@@ -55,11 +73,17 @@ public class DatuKarga {
 	}
 	
 	/**
-	 * @param path
-	 * @param klasea
-	 * @param data
-	 * @throws IOException
-	 */
+     * Karpeta zehatz bateko fitxategi guztiak iteratzen ditu eta datu-multzora gehitzen ditu.
+     * <p>
+     * Fitxategi bakoitzeko testua irakurtzen du, {@link DenseInstance} bat sortzen du eta
+     * dagokion klase balioa (edo {@link Utils#missingValue()}) esleitzen dio.
+     * </p>
+     *
+     * @param path   Irakurri beharreko fitxategiak dituen karpetaren bidea.
+     * @param klasea Instantziei jarriko zaien etiketa ("pos", "neg" edo "" blind denean).
+     * @param data   Instantzia berriak jasoko dituen {@link Instances} objektua.
+     * @throws IOException
+     */
 	private static void loadReviews(String path, String klasea, Instances data) throws IOException {
 		File dir = new File(path);
 		for (File file : dir.listFiles()) {

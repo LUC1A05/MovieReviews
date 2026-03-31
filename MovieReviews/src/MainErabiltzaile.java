@@ -32,7 +32,7 @@ public class MainErabiltzaile {
 			bK.setUseTF(useTF);
 			bK.setUseIDF(useIDF);
 			bK.setUseWordCounts(useWordCounts);
-			BektorizazioaKonfig.getBK().print();
+			//BektorizazioaKonfig.getBK().print();
 			
 			Bektorizazioa bek = new Bektorizazioa(bK, "hiztegia_train.txt");
 			test = bek.bektorizatufix(test);

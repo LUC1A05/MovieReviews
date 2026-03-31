@@ -1,4 +1,13 @@
 
+/**
+ * Testu-datuen bektorizazio-prozesua konfiguratzeko klasea.
+ * <p>
+ * Klase honek <b>Singleton</b> diseinu-patroia erabiltzen du, exekuzio osoan zehar 
+ * konfigurazio bakar bat egongo dela ziurtatzeko. Weka-ko {@code StringToWordVector} 
+ * iragazkiaren parametro nagusiak kudeatzen ditu.
+ * </p>
+ */
+
 public class BektorizazioaKonfig {
 	
 	private int wordsToKeep;

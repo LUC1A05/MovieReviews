@@ -2,20 +2,25 @@ import weka.core.Instances;
 import weka.classifiers.Evaluation;
 import weka.classifiers.meta.AdaBoostM1;
 
-public class ParametroEkorketa {
 
 	/**
 	 * Klase honek AdaBoostM1 eta J48 osatuko duten sailkatzaile optimoa lortzeko parametroen ekorketa eginte du
 	 * 
 	 * Prozesu honek iterazio bidez konbinazio desberdinak probatzen ditu:
-     * <ul>
-     * <li>AdaBoostM1: Iterazio kopurua eta pisuaren atalasea (threshold).</li>
-     * <li>J48: Konfiantza faktorea eta hosto bakoitzeko gutxieneko objektu kopurua.</li>
-     * </ul>
+	 * <ul>
+	 * <li>AdaBoostM1: Iterazio kopurua eta pisuaren atalasea (threshold).</li>
+	 * <li>J48: Konfiantza faktorea eta hosto bakoitzeko gutxieneko objektu kopurua.</li>
+	 * </ul>
 	 * 
 	 * Erabilitako metrika parametro optimoenak lortzeko F-Measure da.
 	 */
+
+public class ParametroEkorketa {
 	
+	
+    /**
+     * Klasearen eraikitzailea
+     */
     public ParametroEkorketa()
     {
         

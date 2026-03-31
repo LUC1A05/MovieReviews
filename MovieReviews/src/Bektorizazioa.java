@@ -89,10 +89,10 @@ public class Bektorizazioa {
 		FixedDictionaryStringToWordVector fd = new FixedDictionaryStringToWordVector();
 		fd.setDictionaryFile(new File("./dictionary.txt"));
 		//ALDATU esperimentaziorako
-		fd.setTFTransform(false);
-		fd.setIDFTransform(false);
+		fd.setTFTransform(konfig.getUseTF());
+		fd.setIDFTransform(konfig.getUseIDF());
 		fd.setLowerCaseTokens(true);
-		fd.setOutputWordCounts(true);
+		fd.setOutputWordCounts(konfig.getUseWordCounts());
 		fd.setTokenizer(new AlphabeticTokenizer());
 		fd.setAttributeNamePrefix("W_");
 		
