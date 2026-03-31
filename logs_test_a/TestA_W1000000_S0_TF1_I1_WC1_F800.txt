@@ -34,3 +34,5 @@ Filtroaren ostean 400
 Num instances in train: 1200
 Num instances in dev: 400
 Iterazio: 50
+0.7903314211277837
+0.8027168627450979
