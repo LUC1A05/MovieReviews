@@ -6,20 +6,19 @@ import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 
+/**
+ * Datu-sortako instantzietako atributu multzoa murrizteko klasea.
+ * <p>
+ * Klase honek dimentsionaltasuna murrizteko bi teknika konbinatzen ditu:
+ * 1. Atributuen ebaluazioa (InfoGain) eta sailkapena (Ranker).
+ * 2. Atributuen ezabaketa (Filter) hautatutako indizeen arabera.
+ * </p>
+ */
+
 public class AtributuHautapena {
 	
 	private int rankN;
 	private int[] selected;
-	
-	
-	/**
-	 * Datu-sortako instantzietako atributu multzoa murrizteko klasea.
-	 * <p>
-	 * Klase honek dimentsionaltasuna murrizteko bi teknika konbinatzen ditu:
-	 * 1. Atributuen ebaluazioa (InfoGain) eta sailkapena (Ranker).
-	 * 2. Atributuen ezabaketa (Filter) hautatutako indizeen arabera.
-	 * </p>
-	 */
 	
 	public AtributuHautapena()
 	{

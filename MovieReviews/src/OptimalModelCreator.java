@@ -3,6 +3,15 @@ import weka.classifiers.meta.AdaBoostM1;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 
+/**
+ * Modelo iragarle optimoena sortzeko eta gordetzeko klasea.
+ * <p>
+ * Klase honek <b>Singleton</b> diseinu-patroia erabiltzen du, exekuzio osoan zehar 
+ * konfigurazio bakar bat egongo dela ziurtatzeko. Klase honetan modelo iragarle optimoena
+ * sortu egingo da, hau behar dituen parametroak aldez aurretik zehaztuta izanda.
+ * </p>
+ * 
+ */
 public class OptimalModelCreator {
     private int it;
     private int thr;
