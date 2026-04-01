@@ -80,13 +80,13 @@ public class MainDatuZientzia
 			all = bek.bektorizatu(all);
 			all = aH.selectAttributes(all);
 			
-			// Crear carpeta models si no existe y guardar modelo con nombre parametrizado
+			// models karpeta sortu ez bada existitzen
 			File modelsDir = new File("models");
 			if (!modelsDir.exists()) {
 				modelsDir.mkdirs();
 			}
 			
-			// Generar nombre del modelo con parámetros (igual que script.sh genera logs)
+			// Sortu izen parametrizatu bat
 			String modelFileName = String.format("models/model_W%d_S%d_TF%d_I%d_WC%d_F%d.model",
 				wordsToKeep,
 				useStemmer ? 1 : 0,
