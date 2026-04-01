@@ -76,10 +76,27 @@ public class MainDatuZientzia
 			
 			KalitateEstimatzaile.ebaluatu(all, rankN);
 			
-		/*	bek = new Bektorizazioa(bK, "hiztegia.txt");
+			bek = new Bektorizazioa(bK, "hiztegia.txt");
 			all = bek.bektorizatu(all);
 			all = aH.selectAttributes(all);
-			Saver.saveOptimalModel(all);*/
+			
+			// Crear carpeta models si no existe y guardar modelo con nombre parametrizado
+			File modelsDir = new File("models");
+			if (!modelsDir.exists()) {
+				modelsDir.mkdirs();
+			}
+			
+			// Generar nombre del modelo con parámetros (igual que script.sh genera logs)
+			String modelFileName = String.format("models/model_W%d_S%d_TF%d_I%d_WC%d_F%d.model",
+				wordsToKeep,
+				useStemmer ? 1 : 0,
+				useTF ? 1 : 0,
+				useIDF ? 1 : 0,
+				useWordCounts ? 1 : 0,
+				rankN);
+			
+			Saver.saveOptimalModel(all, modelFileName);
+			System.out.println("Modelo guardado en: " + modelFileName);
 				
 		}
 		catch(Exception e)

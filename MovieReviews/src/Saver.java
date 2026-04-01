@@ -52,5 +52,16 @@ public class Saver {
 	{
 		SerializationHelper.write("optimal.model", OptimalModelCreator.getOpc().entrenatuEreduOptimoa(all));
 	}
+	
+	/**
+	 * Guardar modelo en ruta personalizada con parámetros en el nombre
+	 * @param all Datu-sorta osoa
+	 * @param filePath Ruta completa del fichero (ej: models/model_W1000000_S0_TF1_I1_WC1_F800.model)
+	 * @throws Exception
+	 */
+	public static void saveOptimalModel(Instances all, String filePath) throws Exception
+	{
+		SerializationHelper.write(filePath, OptimalModelCreator.getOpc().entrenatuEreduOptimoa(all));
+	}
 
 }
