@@ -102,7 +102,12 @@ public class ParametroEkorketa {
                                   rankOnena = rankN; wtKOnena = wtk;
                                   stemOnena = stem; tfOnena = tf;
                                   idfOnena = idf; wcOnena = wc;
-                                  System.out.println("F-Measure onena: " + fm);
+                                  System.out.println("--- F-Measure onena: " + fm + " ---");
+                                  System.out.println("  Iterazioak: " + i + " | Threshold: " + t + 
+                                                     " | Konfiantza: " + c + " | Hostoak: " + h);
+                                  System.out.println("  WTK: " + wtk + " | Stemmer: " + stem + 
+                                                     " | TF: " + tf + " | IDF: " + idf + " | WC: " + wc);
+                                  System.out.println("  RankN: " + rankN);
                                 }
                               }
                             }
