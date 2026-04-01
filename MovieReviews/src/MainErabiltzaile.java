@@ -1,12 +1,16 @@
 
+import weka.classifiers.Classifier;
+import weka.classifiers.Evaluation;
 import weka.classifiers.meta.AdaBoostM1;
+import weka.classifiers.misc.InputMappedClassifier;
+import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.SerializationHelper;
 
 public class MainErabiltzaile {
 
 	public static void main(String[] args) {
-		if (args.length == 0)
+		if (args.length < 2)
 		{
 			System.out.println("Erabilera: (Exekutagarri izena) (testua) (modelu iragarlearen path)\n ##Adbibidez: Iragarpenak_egin test.txt modeloa.model");
 			return ;
@@ -19,6 +23,8 @@ public class MainErabiltzaile {
 			Aurreprozesamendua.cleanDataSetDirectory(data);
 			System.out.println(data);
 			Instances test = DatuKarga.datuakKargatu(true, data + "/test_blind_processed");
+			test.setClassIndex(test.numAttributes() - 1);
+			System.out.println("Bektorizatu aurretik: " + test.numAttributes());
 			
 			int wordsToKeep = 1000000;
 			boolean useStemmer = false;
@@ -36,15 +42,18 @@ public class MainErabiltzaile {
 			
 			Bektorizazioa bek = new Bektorizazioa(bK, "hiztegia_train.txt");
 			test = bek.bektorizatufix(test);
+			System.out.println("Bektorizatu ostean: " + test.numAttributes());
 
-			int rankN = 1000;
-			AtributuHautapena aH = new AtributuHautapena();
-			aH.aldatuRank(rankN);
-			test = aH.removeAttributes(test);
-
+//			int rankN = 1000;
+//			AtributuHautapena aH = new AtributuHautapena();
+//			aH.aldatuRank(rankN);
+//			test = aH.removeAttributes(test);
+//			System.out.println("Hautatu ostean: " + test.numAttributes());
+			
+			
 			AdaBoostM1 adaboost = (AdaBoostM1) SerializationHelper.read(modelPath);
 			Iragarpenak.iragarpenakEgin(test, adaboost);
-
+			
 		}
 		catch(Exception e)
 		{
