@@ -96,7 +96,7 @@ public class MainDatuZientzia
 				rankN);
 			
 			Saver.saveOptimalModel(all, modelFileName);
-			System.out.println("Modelo guardado en: " + modelFileName);
+			System.out.println("MEredua gordeta: " + modelFileName);
 				
 		}
 		catch(Exception e)

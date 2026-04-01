@@ -10,10 +10,22 @@ import java.util.Random;
 
 import weka.classifiers.Classifier;
 
+/**
+ * Ereduaren kalitatea eta errore-estimazioa kudeatzen dituen klasea.
+ * <p>
+ * Klase honek hainbat ebaluazio-teknika eskaintzen ditu (Hold-Out, Cross-Validation, etab.)
+ * sailkatzaileak datu berrien aurrean izango duen portaera estimatzeko. 
+ * Helburu nagusia gain-egokitzapena (overfitting) detektatzea eta ereduaren 
+ * sendotasun estatistikoa neurtzea da.
+ * </p>
+ */
 
 public class KalitateEstimatzaile {
 
-	
+	/**
+     * Ebaluazio baten emaitza nagusiak (Summary, Confusion Matrix eta Class Details) 
+     * modu egituratuan inprimatzen ditu kontsolatik.
+     */
     private static void idatziReportea(String ebaluaketaMota, Evaluation eval) throws Exception
     {
         StringBuilder report = new StringBuilder();
@@ -26,6 +38,20 @@ public class KalitateEstimatzaile {
         System.out.println(report);
     }
     
+    /**
+     * Repeated Stratified Hold-Out ebaluazioa burutzen du.
+     * <p>
+     * Prozesua {@code rep} aldiz errepikatzen da, aldi bakoitzean datu-sorta modu aleatorioan 
+     * baina estratifikatuan (klaseen proportzioa mantenduz) banatuz. Amaieran, lortutako 
+     * metrika guztien bataz bestekoa eta desbiderapen tipikoa kalkulatzen ditu, 
+     * emaitzen egonkortasuna neurtzeko.
+     * </p>
+     *
+     * @param all  Datu-sorta osoa.
+     * @param rep  Iterazio edo errepikapen kopurua.
+     * @param perc Test multzorako erabiliko den datu portzentajea.
+     * @throws Exception
+     */
     public static void repeatedStratifiedHoldOut(Instances all, int rep, double perc, int rankN) throws Exception
     {
 
@@ -52,6 +78,18 @@ public class KalitateEstimatzaile {
         imprimatuEstatistikak("F-MEASURE", fMeasureList);
     }
     
+    /**
+     * k-Fold Cross-Validation (kFCV) ebaluazio estandarra burutzen du.
+     * <p>
+     * Datuak {@code folds} zatitan banatzen ditu; iterazio bakoitzean zati bat testerako 
+     * erabiltzen da eta gainerakoak entrenamendurako. Metodo honek fold bakoitzeko 
+     * emaitza zehatzak inprimatzen ditu (Summary, Accuracy, Confusion Matrix).
+     * </p>
+     *
+     * @param folds Partiketa kopurua.
+     * @param all   Datu-sorta osoa.
+     * @throws Exception
+     */
     private static void kFCV(int folds, Instances all, int rankN) throws Exception
     {
     	PartiketaSortzailea pS = new PartiketaSortzailea(all);
@@ -69,7 +107,12 @@ public class KalitateEstimatzaile {
     	}
     	
     }
-
+    
+    /**
+     * Metrika zerrenda bat jaso eta bere azterketa estatistiko oinarrizkoa kalkulatzen du.
+     * @param metrika Neurtzen ari den metrikan izena (adib. "ACCURACY").
+     * @param balioak Iterazioetan lortutako emaitzen zerrenda.
+     */
     private static void imprimatuEstatistikak(String metrika, List<Double> balioak) {
         double sum = 0;
         for (double v : balioak) 
@@ -85,7 +128,23 @@ public class KalitateEstimatzaile {
         System.out.printf("Bataz beste: %.4f\n", media);
         System.out.printf("Desbiderapen tipikoa: %.4f\n", desbideraketa);
     }
-
+    
+    /**
+     * Hold-Out ebaluazio-metodoa aplikatzen du emandako instantzia sorta baten gainean.
+     * <p>
+     * Prozesu honek hurrengo urratsak jarraitzen ditu:
+     * 1. Datu-multzoa bi zatitan banatzen du (entrenamendua eta proba) %30eko test proportzioa 
+     * erabiliz {@link PartiketaSortzailea} klasearen bidez.
+     * 2. Atributu hautapenerako ranking-a konfiguratzen du {@code rankN} balioaren arabera.
+     * 3. Eredu optimoa entrenatzen du entrenamendu-multzoa (train) erabiliz.
+     * 4. Lortutako eredua ebaluatzen du proba-multzoaren (test) gainean.
+     * 5. Ebaluazioaren emaitzekin txosten bat sortzen du "Hold Out %30" izenburupean.
+     * </p>
+     *
+     * @param all Ebaluatu nahi diren instantzia guztien multzoa.
+     * @param rankN Aurreprozesamenduan hautatuko diren atributu kopurua.
+     * @throws Exception
+     */
     public static void holdOut(Instances all, int rankN) throws Exception
     {
     	PartiketaSortzailea ps = new PartiketaSortzailea(all);
@@ -98,7 +157,19 @@ public class KalitateEstimatzaile {
         eval.evaluateModel(clasi, datuak[1]);
         idatziReportea("Hold Out %30", eval);
     }
-
+    
+    /**
+     * Ebaluazio "ez zintzoa" edo entrenamendu-sortaren gaineko ebaluazioa burutzen du.
+     * <p>
+     * Metodo honen helburua eredua entrenatzeko erabili diren datu berdinekin 
+     * ebaluatzea da (edo 5-FCV bidezko estimazio azkar bat egitea). Balio hauek 
+     * ebaluazio "zintzoekin" alderatzean, ereduak gain-egokitzapena duen 
+     * identifikatu daiteke.
+     * </p>
+     *
+     * @param all Entrenamendurako eta testerako erabiliko den datu-sorta.
+     * @throws Exception Weka-ko ebaluazio metodoen erroreak.
+     */
     private static void ezZintzoa(Instances all, int rankN) throws Exception
     {
     	PartiketaSortzailea ps = new PartiketaSortzailea(all);
@@ -128,13 +199,13 @@ public class KalitateEstimatzaile {
         {
         	all.setClassIndex(all.attribute("class").index());
             
-            //ezZintzoa(all, rankN);
+            ezZintzoa(all, rankN);
             
-            //holdOut(all, rankN);
+            holdOut(all, rankN);
             
             repeatedStratifiedHoldOut(all, 10, 30, rankN);
             
-            //kFCV(5, all, rankN);
+            kFCV(5, all, rankN);
         }
         catch (Exception e)
         {

@@ -29,7 +29,7 @@ public class MainErabiltzaile {
 			int wordsToKeep = 1000000;
 			boolean useStemmer = false;
 			boolean useTF = true;
-			boolean useIDF = true;
+			boolean useIDF = false;
 			boolean useWordCounts = true;
 			BektorizazioaKonfig bK = BektorizazioaKonfig.getBK();
 			

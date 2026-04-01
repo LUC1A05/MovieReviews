@@ -17,6 +17,7 @@ public class OptimalModelCreator {
     private int thr;
     private float conf;
     private int hos;
+    private int rankN;
 
     private static OptimalModelCreator opc = null;
 
@@ -81,4 +82,6 @@ public class OptimalModelCreator {
 
         return adaboost;
     }
+    public int getRankN() { return rankN; }
+    public void setRankN(int rankN) { this.rankN = rankN; }
 }

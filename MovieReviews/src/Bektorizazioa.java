@@ -8,22 +8,37 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.FixedDictionaryStringToWordVector;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
+/**
+ * Testu-datuak bektorizatzeko ardura duen klasea, Weka-ko StringToWordVector 
+ * iragazkiak erabiliz.
+ * <p>
+ * Klase honek testu gordinetik atributu numerikoak (hitz-maiztasunak, TF-IDF...) 
+ * sortzen ditu, sailkatzaileek prozesatu ahal izateko. Bi modu eskaintzen ditu:
+ * hiztegi berria sortzea edo lehendik dagoen hiztegi finko bat erabiltzea.
+ * </p>
+ */
+
 public class Bektorizazioa {
 	
 	private BektorizazioaKonfig konfig;
 	private File hiztegia;
 	
+	/**
+	 * Bektorizazio prozesua konfigurazio eta hiztegi fitxategi batekin abiarazten du.
+	 * @param konfig   Bektorizazio-parametroak biltzen dituen objektua (TF, IDF, maiztasunak...).
+	 * @param hiztPath Hiztegia gordetzeko edo kargatzeko fitxategiaren bidea.
+	 */
 	public Bektorizazioa(BektorizazioaKonfig konfig, String hiztPath)
 	{
 		this.konfig = konfig;
 		this.hiztegia = new File(hiztPath);
 	}
 	
-	
 	/**
-	 * @param .arff duen path-a
-	 * @return Pasatutako instantziei stwv pasatuko zaio
-	 * @throws Exception 
+	 * Instantziak bektorizatzen ditu fitxategi baten bidetik abiatuta.
+	 * @param path .arff fitxategiaren bidea.
+	 * @return Datu bektorizatuak (Instances).
+	 * @throws Exception Fitxategia kargatzean edo iragazkia aplikatzean errorerik badago.
 	 */
 	public Instances bektorizatu(String path) throws Exception {
 		Instances data = pathToArff(path);
@@ -31,9 +46,15 @@ public class Bektorizazioa {
 	}
 	
 	/**
-	 * @param data
-	 * @return Pasatutako instantziei stwv pasatuko zaio
-	 * @throws Exception 
+	 * StringToWordVector (STWV) iragazkia aplikatzen die emandako instantziei.
+	 * <p>
+	 * Prozesu honek hitz-tokenizazioa, stop-words ezabaketa (Rainbow), 
+	 * stemmer-a eta TF-IDF transformazioak aplikatzen ditu konfigurazioaren arabera.
+	 * Era berean, lortutako hiztegia fitxategi batean gordetzen du.
+	 * </p>
+	 * @param data Bektorizatu nahi diren instantziak.
+	 * @return Instantzia bektorizatuak, atributu izenetan "W_" aurrizkiarekin.
+	 * @throws Exception Iragazkiaren konfigurazioak edo aplikazioak huts egiten badu.
 	 */
 	public Instances bektorizatu(Instances data) throws Exception {
 		StringToWordVector stwv = new StringToWordVector();
@@ -70,9 +91,10 @@ public class Bektorizazioa {
 	
 	
 	/**
-	 * @param .arff duen path-a
-	 * @return Pasatutako instantziei fix dictionary pasatuko zaio
-	 * @throws Exception 
+	 * Hiztegi finko bat erabiliz bektorizatzen du fitxategi baten bidetik abiatuta.
+	 * @param path .arff fitxategiaren bidea.
+	 * @return Datu bektorizatuak hiztegi finkoaren arabera.
+	 * @throws Exception Fitxategia kargatzean edo iragazkia aplikatzean errorerik badago.
 	 */
 	public Instances bektorizatufix(String path) throws Exception {
 		Instances data = pathToArff(path);
@@ -80,9 +102,15 @@ public class Bektorizazioa {
 	}
 	
 	/**
-	 * @param data
-	 * @return Pasatutako instantziei fix dictionary pasatuko zaio
-	 * @throws Exception 
+	 * FixedDictionaryStringToWordVector iragazkia aplikatzen du.
+	 * <p>
+	 * Metodo hau erabilgarria da test-multzoak bektorizatzeko, entrenamenduan 
+	 * sortutako hiztegi bera erabili behar denean, atributuen arteko 
+	 * koherentzia bermatzeko.
+	 * </p>
+	 * @param data Bektorizatu nahi diren instantziak.
+	 * @return Hiztegi finkoari egokitutako instantzia bektorizatuak.
+	 * @throws Exception Hiztegi fitxategia aurkitzen ez bada edo iragazkiak huts egitean.
 	 */
 	public Instances bektorizatufix(Instances data) throws Exception {
 		FixedDictionaryStringToWordVector fd = new FixedDictionaryStringToWordVector();
@@ -102,7 +130,13 @@ public class Bektorizazioa {
 		Instances ema = Filter.useFilter(data, fd);
 		return ema;
 	}
-	
+	/**
+	 * .arff fitxategi bat kargatzen du eta klase-atributua azken posizioan ezartzen du.
+	 * 
+	 * @param path Fitxategiaren bidea.
+	 * @return Kargatutako Instantziak.
+	 * @throws Exception Fitxategia irakurri ezin bada.
+	 */
 	private Instances pathToArff(String path) throws Exception {
 		DataSource source = new DataSource(path);
 		Instances data = source.getDataSet();
