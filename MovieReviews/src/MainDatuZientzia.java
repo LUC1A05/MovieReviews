@@ -29,46 +29,10 @@ public class MainDatuZientzia
 			Saver.saveArff(train, new File("train_RAW.arff"));
 			Saver.saveArff(dev, new File("dev_RAW.arff"));
 			
-			int wordsToKeep = Integer.parseInt(args[1]);
-			boolean useStemmer = Integer.parseInt(args[2]) == 1;
-			boolean useTF = Integer.parseInt(args[3]) == 1;
-			boolean useIDF = Integer.parseInt(args[4]) == 1;;
-			boolean useWordCounts = Integer.parseInt(args[5]) == 1;
-			BektorizazioaKonfig bK = BektorizazioaKonfig.getBK();
-			
-			bK.setWordsToKeep(wordsToKeep);
-			bK.setUseStemmer(useStemmer);
-			bK.setUseTF(useTF);
-			bK.setUseIDF(useIDF);
-			bK.setUseWordCounts(useWordCounts);
-			BektorizazioaKonfig.getBK().print();
-			
-			Bektorizazioa bek = new Bektorizazioa(bK, "hiztegia_train.txt");
-			train = bek.bektorizatu(train);
-			dev = bek.bektorizatufix(dev);
-			
-			DatuAnalisia.datuSortaBekAnalisia(train);
-			DatuAnalisia.datuSortaBekAnalisia(dev);
-			
-			System.out.println("Atrib kop " + train.numAttributes());
-			System.out.println("Atrib kop " + dev.numAttributes());
-
-			int rankN = Integer.parseInt(args[6]);
-			AtributuHautapena aH = new AtributuHautapena();
-			aH.aldatuRank(rankN);
-			train = aH.selectAttributes(train);
-			dev = aH.removeAttributes(dev);
-			System.out.println("Atrib kop " + train.numAttributes());
-			System.out.println("Atrib kop " + dev.numAttributes());
-			System.out.println("Filtroaren ostean " + dev.numInstances());
-
-			
-			
-			//train.setClassIndex(train.numAttributes() - 1);
-			//dev.setClassIndex(dev.numAttributes() - 1);
-			
 			ParametroEkorketa.ParametroEkorketa(train, dev);
 			
+			int rankN = OptimalModelCreator.getOpc().getRankN();
+			 
 			DataSource ds = new DataSource("train_RAW.arff");
 			Instances all = ds.getDataSet();
 			ds = new DataSource("dev_RAW.arff");
@@ -76,10 +40,16 @@ public class MainDatuZientzia
 			
 			KalitateEstimatzaile.ebaluatu(all, rankN);
 			
-		/*	bek = new Bektorizazioa(bK, "hiztegia.txt");
-			all = bek.bektorizatu(all);
-			all = aH.selectAttributes(all);
-			Saver.saveOptimalModel(all);*/
+			BektorizazioaKonfig bK = BektorizazioaKonfig.getBK();
+            Bektorizazioa bek = new Bektorizazioa(bK, "hiztegia_train.txt");
+            all = bek.bektorizatu(all);
+
+            AtributuHautapena aH = new AtributuHautapena();
+            aH.aldatuRank(rankN);
+            all = aH.selectAttributes(all);
+
+            Saver.saveOptimalModel(all);
+            System.out.println("eredua gordeta optimal.model");
 				
 		}
 		catch(Exception e)
