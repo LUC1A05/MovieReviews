@@ -29,20 +29,11 @@ public class MainDatuZientzia
 			Saver.saveArff(train, new File("train_RAW.arff"));
 			Saver.saveArff(dev, new File("dev_RAW.arff"));
 			
-			int wordsToKeep = Integer.parseInt(args[1]);
-			boolean useStemmer = Integer.parseInt(args[2]) == 1;
-			boolean useTF = Integer.parseInt(args[3]) == 1;
-			boolean useIDF = Integer.parseInt(args[4]) == 1;;
-			boolean useWordCounts = Integer.parseInt(args[5]) == 1;
+			ParametroEkorketa.ParametroEkorketa(train, dev);
+			
+			int rankN = OptimalModelCreator.getOpc().getRankN();
+			
 			BektorizazioaKonfig bK = BektorizazioaKonfig.getBK();
-			
-			bK.setWordsToKeep(wordsToKeep);
-			bK.setUseStemmer(useStemmer);
-			bK.setUseTF(useTF);
-			bK.setUseIDF(useIDF);
-			bK.setUseWordCounts(useWordCounts);
-			BektorizazioaKonfig.getBK().print();
-			
 			Bektorizazioa bek = new Bektorizazioa(bK, "hiztegia_train.txt");
 			train = bek.bektorizatu(train);
 			dev = bek.bektorizatufix(dev);
@@ -53,7 +44,6 @@ public class MainDatuZientzia
 			System.out.println("Atrib kop " + train.numAttributes());
 			System.out.println("Atrib kop " + dev.numAttributes());
 
-			int rankN = Integer.parseInt(args[6]);
 			AtributuHautapena aH = new AtributuHautapena();
 			aH.aldatuRank(rankN);
 			train = aH.selectAttributes(train);
@@ -61,13 +51,6 @@ public class MainDatuZientzia
 			System.out.println("Atrib kop " + train.numAttributes());
 			System.out.println("Atrib kop " + dev.numAttributes());
 			System.out.println("Filtroaren ostean " + dev.numInstances());
-
-			
-			
-			//train.setClassIndex(train.numAttributes() - 1);
-			//dev.setClassIndex(dev.numAttributes() - 1);
-			
-			ParametroEkorketa.ParametroEkorketa(train, dev);
 			
 			DataSource ds = new DataSource("train_RAW.arff");
 			Instances all = ds.getDataSet();
@@ -88,11 +71,11 @@ public class MainDatuZientzia
 			
 			// Sortu izen parametrizatu bat
 			String modelFileName = String.format("models/model_W%d_S%d_TF%d_I%d_WC%d_F%d.model",
-				wordsToKeep,
-				useStemmer ? 1 : 0,
-				useTF ? 1 : 0,
-				useIDF ? 1 : 0,
-				useWordCounts ? 1 : 0,
+				bK.getWordsToKeep(),
+				bK.getUseStemmer()? 1 : 0,
+				bK.getUseTF() ? 1 : 0,
+				bK.getUseIDF() ? 1 : 0,
+				bK.getUseWordCounts() ? 1 : 0,
 				rankN);
 			
 			Saver.saveOptimalModel(all, modelFileName);

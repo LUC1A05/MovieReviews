@@ -48,12 +48,12 @@ public class ParametroEkorketa {
         int[] rankNOps          = {800};
         
         //AdaBoostM1
-        int[] iterazioak = {50, 100, 150}; //50, 100, 150
-        int[] threshold = {50, 90, 100}; //50, 90, 100
+        int[] iterazioak = {50}; //50, 100, 150
+        int[] threshold = {100}; //50, 90, 100
         
         //J48
-        float[] confidence = {0.1f, 0.25f, 0.5f}; //,0.1f,0.25 , 0.5f
-        int[] hostoak = {10, 15, 20}; //1015, 20
+        float[] confidence = {0.25f}; //,0.1f,0.25 , 0.5f
+        int[] hostoak = {10}; //1015, 20
         double maxFMeasure = 0;
         
         int    itOnena = 0, thrOnena = 0, hosOnena = 0, rankOnena = 0, wtKOnena = 0;
