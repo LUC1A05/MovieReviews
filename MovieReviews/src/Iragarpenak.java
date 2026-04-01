@@ -35,12 +35,21 @@ public class Iragarpenak {
 		
 		Evaluation eval = new Evaluation(test);
 		double[] pred = eval.evaluateModel(adaboost, test);
+		int pos = 0;
+		int neg = 0;
 		
 		for(int i=0; i<pred.length; i++) {
         	String klase = test.classAttribute().value((int) pred[i]);
-            System.out.println(i + ". instantziaren iragarpena: " + klase);
+            System.out.println((i + 1) + ". instantziaren iragarpena: " + klase);
+            
+            if (klase.equals("pos")) {
+            	pos ++;
+            } else {
+            	neg ++;
+            }
 		}
-		
+		System.out.println(pos);
+		System.out.println(neg);
 	}
 
 }

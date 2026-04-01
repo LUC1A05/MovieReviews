@@ -67,4 +67,9 @@ public class BektorizazioaKonfig {
 		this.useWordCounts = wc;
 	}
 
+	public void print()
+	{
+		System.out.println("Bektorizazio konfigurazioa:");
+		System.out.println("WTK: " + wordsToKeep + " Stemmer: " + useStemmer + " TF: " + useTF + " IDF: " + useIDF + " WC: " + useWordCounts);
+	}
 }

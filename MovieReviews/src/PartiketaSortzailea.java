@@ -11,6 +11,7 @@ public class PartiketaSortzailea {
 	int batchNum;
 	Instances batches[][];
 	Instances dataRaw;
+	int rank;
 	
 	
 	public PartiketaSortzailea(Instances pDataRaw)
@@ -23,11 +24,13 @@ public class PartiketaSortzailea {
 	{
 		//bektorizazioa
 		Bektorizazioa bek = new Bektorizazioa(BektorizazioaKonfig.getBK(), "dict.temp");
+	
         Instances trainSet = bek.bektorizatu(trainPart);
         Instances testSet = bek.bektorizatufix(testPart);
         
         // atributu hautapena
         AtributuHautapena attSel = new AtributuHautapena();
+        attSel.aldatuRank(rank);
         //trainSet.setClass(null);
         trainSet.setClassIndex(0);
         testSet.setClassIndex(0);
@@ -91,6 +94,11 @@ public class PartiketaSortzailea {
         if (index < 0 || index >= batchNum)
             throw new IllegalArgumentException("Index out of bounds");
         return batches[index];
+    }
+    
+    public void setRank(int pRank)
+    {
+    	rank = pRank;
     }
 	
 }
