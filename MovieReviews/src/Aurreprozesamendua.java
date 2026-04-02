@@ -56,11 +56,11 @@ public class Aurreprozesamendua {
 
         String trainOut = rootDir + "/train_processed";
         String devOut = rootDir + "/dev_processed";
-        String testOut = rootDir + "/test_blind_processed";
+        //String testOut = rootDir + "/test_blind_processed";
         
         processFolder(new File(rootDir + "/train"), new File(trainOut));
         processFolder(new File(rootDir + "/dev"), new File(devOut));
-        processFolder(new File(rootDir + "/test_blind"), new File(testOut));
+        //processFolder(new File(rootDir + "/test_blind"), new File(testOut));
     }
 
     private static void processFolder(File source, File destination) throws IOException
