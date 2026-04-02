@@ -36,8 +36,6 @@ public class ParametroEkorketa {
 	 */
     public static void ParametroEkorketa(Instances train, Instances dev) throws Exception {
         
-        System.out.println("Num instances in train: " + train.numInstances());
-        System.out.println("Num instances in dev: " + dev.numInstances());
         
         //Bektor params
         int[] wordsToKeepOps    = {10000};

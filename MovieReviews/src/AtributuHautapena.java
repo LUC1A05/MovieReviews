@@ -75,7 +75,6 @@ public class AtributuHautapena {
 		remove.setInputFormat(data);
 		
 		Instances ema = Filter.useFilter(data, remove);
-		System.out.println("Filtroaren ostean " + ema.numInstances());
 		return ema;
 	}
 	
