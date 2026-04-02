@@ -48,8 +48,8 @@ public class Iragarpenak {
             	neg ++;
             }
 		}
-		System.out.println(pos);
-		System.out.println(neg);
+		System.out.println("Positiboak:" + pos);
+		System.out.println("Negatiboak:" + neg);
 	}
 
 }

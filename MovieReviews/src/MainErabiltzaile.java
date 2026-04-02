@@ -20,9 +20,9 @@ public class MainErabiltzaile {
 		String modelPath = args[1];
 		try
 		{
-			Aurreprozesamendua.cleanDataSetDirectory(data);
+			String dataDir = Aurreprozesamendua.cleanDataDirectory(data);
 			System.out.println(data);
-			Instances test = DatuKarga.datuakKargatu(true, data + "/test_blind_processed");
+			Instances test = DatuKarga.datuakKargatu(true, dataDir);
 			test.setClassIndex(test.numAttributes() - 1);
 			System.out.println("Bektorizatu aurretik: " + test.numAttributes());
 			

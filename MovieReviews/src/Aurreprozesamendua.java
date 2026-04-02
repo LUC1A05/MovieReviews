@@ -37,18 +37,12 @@ public class Aurreprozesamendua {
 	
 	public static String cleanDataDirectory(String sourcePath) throws IOException
 	{
-        File sourceFolder = new File(sourcePath);
-
+		
         //Karpeta tenporal bat sortzen du datu prozesatuak gordetzeko
-        Path tempPath = Files.createTempDirectory("weka_preprocess_");
-        File tempFolder = tempPath.toFile();
+        String sourcePath_proccesed = sourcePath + "_proccesed"; 
+        processFolder(new File(sourcePath), new File(sourcePath_proccesed));
+        return sourcePath_proccesed;
 
-        //System.out.println("Karpeta tenporala: " + tempFolder.getAbsolutePath());
-
-        //Karpeta prozesatzen du
-        processFolder(sourceFolder, tempFolder);
-
-        return tempFolder.getAbsolutePath();
 	}
 	
 	public static void cleanDataSetDirectory(String rootDir) throws Exception
@@ -62,6 +56,7 @@ public class Aurreprozesamendua {
         processFolder(new File(rootDir + "/dev"), new File(devOut));
         //processFolder(new File(rootDir + "/test_blind"), new File(testOut));
     }
+    
 
     private static void processFolder(File source, File destination) throws IOException
     {
