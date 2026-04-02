@@ -193,6 +193,18 @@ public class KalitateEstimatzaile {
         idatziReportea("5FCV - Ez Zintzoa", eval);
     }
     
+    /**
+     * Prozesu osoaren ebaluazio exekuzio nagusia.
+     * <p>
+     * Metodo honek klaseko ebaluazio eskema guztiak sekuentzialki exekutatzen ditu:
+     * 1. Ez-zintzoa (5-FCV entrenamendu datuekin).
+     * 2. Hold-Out (%70 train / %30 test).
+     * 3. Repeated Stratified Hold-Out (10 errepikapen).
+     * 4. 5-Fold Cross Validation zintzoa.
+     * </p>
+     * * @param all Ebaluatu nahi den datu sorta osoa.
+     * @param rankN Atributu hautapenean mantendu beharreko atributu kopurua.
+     */
     public static void ebaluatu(Instances all, int rankN) {
 
         try
