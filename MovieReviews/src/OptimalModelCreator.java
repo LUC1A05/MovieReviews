@@ -29,12 +29,23 @@ public class OptimalModelCreator {
         hos = 0;
     }
 
+    /**
+     * Klasearen instantzia bakarra lortzeko metodo estatikoa.
+     * @return OptimalModelCreator-en instantzia bakarra.
+     */
     public static OptimalModelCreator getOpc() {
         if (opc == null)
             opc = new OptimalModelCreator();
         return opc;
     }
 
+    /**
+     * Eredua eraikitzeko erabiliko diren parametro optimoak ezartzen ditu.
+     * * @param pI         Iterazio kopurua.
+     * @param pT         Pisu-atalasea.
+     * @param confOnena  Konfiantza-faktorea (J48).
+     * @param pH         Hosto bakoitzeko gutxieneko objektu kopurua.
+     */
     public void setParametroOptimoak(int pI, int pT, float confOnena, int pH)
     {
         it = pI;
@@ -43,27 +54,34 @@ public class OptimalModelCreator {
         hos = pH;
     }
     
+    /** @return Iterazio kopurua. */
     public int getIt() {
     	return it;
     }
     
+    /** @return Pisu-atalasea. */
     public int getTh()
     {
     	return thr;
     }
     
+    /** @return J48 konfiantza-faktorea. */
     public float getConf()
     {
     	return conf;
     }
     
+    /** @return Gutxieneko objektu kopurua hostoko. */
     public int getHos()
     {
     	return hos;
     }
     
-    
-
+    /**
+     * Eredu iragarle optimoa entrenatzen du emandako datu-sortarekin.
+     * * @param train Entrenamendurako erabiliko diren instantziak (Instances).
+     * @return Entrenatutako sailkatzailea (Classifier), AdaBoostM1 motakoa.
+     */
     public Classifier entrenatuEreduOptimoa(Instances train)
     {
         AdaBoostM1 adaboost = null;
@@ -82,6 +100,10 @@ public class OptimalModelCreator {
 
         return adaboost;
     }
+    
+    /** @return Mantendu beharreko atributu kopurua. */
     public int getRankN() { return rankN; }
+    
+    /** @param rankN Atributu kopurua ezartzeko. */
     public void setRankN(int rankN) { this.rankN = rankN; }
 }
