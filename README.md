@@ -1,5 +1,21 @@
 # MovieReviews - Filmaren Kritiken Sailkapen Sistema
 
+---
+
+## ⚡ For the Impatients
+
+**TL;DR** - Exekutatu eta bukatu:
+
+```bash
+# Grid search guztia egitea (denbora luzea hartzen du)
+bash script.sh
+# Grid a modifikatzeko scriptaren balioak aldatu
+```
+
+**Emaitzak:** `log_experimetnalak/` karpetan `.txt` fitxeroak
+
+---
+
 ## Proiektuaren Deskribapena
 
 MovieReviews proiektua filmen kritiketako sentimendu-sailkapena egiteko sistema da. Proiektu honek datu-zientzian eta makina-ikaskuntzaren teknikak erabiltzen ditu kritiketatiko iritzi positibo edo negatiboak identifikatzeko.
@@ -35,8 +51,6 @@ MovieReviews/
 │
 ├── bin/                           # Bilegatutako klaseak (JAR karpeta barnean)
 ├── doc/                           # Javadoc dokumentazioa
-├── MovieReviews.jar              # Exekutagarri Java (JAR)
-└── dictionary.txt                # Euskararen hiztegia
 ```
 
 ---
@@ -45,7 +59,7 @@ MovieReviews/
 
 ### 1. **MovieReviews.jar** - Parametroen Bilaketa (Grid Search)
 
-Honek bektorizazioaren parametro desberdinak saiaka ditzake, bakoitzaren emaitzak kalkulatzean.
+Honek bektorizazioaren parametro desberdinak sailaka ditzake, bakoitzaren emaitzak kalkulatzean.
 
 **Erabilera:**
 ```bash
@@ -78,7 +92,7 @@ bash script.sh
 **Script-ak egiten duena:**
 
 1. **Konfigurazioa**: Parametroen barrutiak eta balioak ezartzen ditu
-2. **Begizta Ugaria (6 maila)**: Parametro kombinazio guztiaren sorketa:
+2. **Begizta (6 maila)**: Parametro kombinazio guztiaren sorketa:
    - WordsToKeep (W): 10000, 50000, 100000
    - Stemmer (S): ez/bai (0/1)
    - TF (TF): erabiltzea (1)
@@ -87,10 +101,9 @@ bash script.sh
    - Ezaugarri Kopurua (F): 800
 
 3. **Exekuzioetatik gordetzen du**:
-   - Bakoitzeko emaitza `log_experimetnalak/` karpetan gordetzen du
+   - Bakoitzeko emaitza `log_experimetnalak/` karpetan gordetzen du, bere kalitate estimazioarekin batera.
    - Fitxeroaren izena parametroen espezifikazioa dute: `res_W{W}_S{S}_TF{TF}_I{IDF}_WC{WC}_F{F}.txt`
-
-4. **Emaitzak**: Bakoitzean, sailkatazailearen jokoa eta emaitzak gordetzen dira
+   - Sailkatzailea models karpetan gordeko du
 
 **Adibidez, lortzen diren fitxeroak:**
 ```
