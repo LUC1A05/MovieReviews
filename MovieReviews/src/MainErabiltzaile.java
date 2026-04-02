@@ -12,7 +12,7 @@ public class MainErabiltzaile {
 	public static void main(String[] args) {
 		if (args.length < 2)
 		{
-			System.out.println("Erabilera: (Exekutagarri izena) (test_blind) (modelu iragarlearen path)\n ##Adbibidez: Iragarpenak_egin path test_blind modeloa.model");
+			System.out.println("Erabilera: (Exekutagarri izena) (path test_blind) (modelu iragarlearen path)\n ##Adbibidez: Iragarpenak_egin path_test_blind modeloa.model");
 			return ;
 		}
 		
